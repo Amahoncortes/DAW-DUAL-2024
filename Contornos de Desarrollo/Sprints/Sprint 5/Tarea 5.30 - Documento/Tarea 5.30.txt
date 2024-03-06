@@ -1,0 +1,3 @@
+"Libro Agile Samurai: leer el capítulo 13, Refactoring:
+Paying Down Your Technical Debt"
+

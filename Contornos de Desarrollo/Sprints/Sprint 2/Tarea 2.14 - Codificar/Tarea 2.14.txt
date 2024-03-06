@@ -1,0 +1,3 @@
+Ejercicios strings, libro de la rata pag 99 y siguientes:
+Ejercicio tema 7 "Strings"
+

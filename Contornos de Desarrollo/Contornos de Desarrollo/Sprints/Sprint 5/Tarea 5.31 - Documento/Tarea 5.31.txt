@@ -1,0 +1,1 @@
+Consultar la Tabla con code smells y refactorizaciones del final del libro de Martin Fowler y Kent Beck

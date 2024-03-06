@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica 11</title>
+</head>
+<style>
+    #campo {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        height: 680px;
+        width: calc(100% - 20px);
+        background-image: url('img/pista.png');
+        background-size: cover;
+    }
+
+
+    #coche1 {
+        position: absolute;
+        height: 100px;
+        width: 200px;
+        top: 200px;
+        left: 10px;
+    }
+
+    #coche2 {
+        position: absolute;
+        height: 100px;
+        width: 200px;
+        top: 500px;
+        left: 10px;
+    }
+
+    #campoBoton {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        background-color: rgb(89, 94, 94);
+
+        height: calc(100% - 20px);
+        width: calc(100% - 20px);
+    }
+</style>
+<script src="js/ej_1.js"></script>
+
+<body>
+    <div id="campo">
+        <img src="img/coche.png" id="coche1" name="1" value="coche 1">
+        <img src="img/coche.png" id="coche2" name="2" value="coche 2">
+    </div>
+    <div id="campoBoton">
+        <input type="button" id="iniciar" name="iniciar" value="Iniciar">
+    </div>
+</body>
+
+</html>

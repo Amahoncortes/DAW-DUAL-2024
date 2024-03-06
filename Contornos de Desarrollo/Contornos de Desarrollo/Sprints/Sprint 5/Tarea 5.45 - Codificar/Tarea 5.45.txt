@@ -1,0 +1,4 @@
+Crea el proyecto para la refactorización del Yatzy y configúralo con Maven
+
+https://github.com/emilybache/Yatzy-Refactoring-Kata/tree/main/java
+

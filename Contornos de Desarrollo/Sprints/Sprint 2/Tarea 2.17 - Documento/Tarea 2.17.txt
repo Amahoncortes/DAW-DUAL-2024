@@ -1,0 +1,4 @@
+Jupyter Notebooks in VS Code: cómo hacerse unos apuntes ejecutables
+
+
+https://code.visualstudio.com/docs/datascience/jupyter-notebooks

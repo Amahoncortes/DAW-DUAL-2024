@@ -1,0 +1,12 @@
+A2.1-Clasificación de Tecnologías
+Busca las siguientes tecnologías relacionadas con el desarrollo web y clasifícalas en:
+
+Cliente/Servidor e indica con qué lenguajes de programación están relacionados
+
+React
+Spring Framework
+Node.js
+Laravel
+AngularJS
+Symfony
+Apache Struts

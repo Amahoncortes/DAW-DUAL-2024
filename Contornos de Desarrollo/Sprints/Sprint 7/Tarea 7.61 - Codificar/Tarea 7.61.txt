@@ -1,0 +1,1 @@
+Resuelve el examen práctico de diciembre refactorex hasta llegar al bug del try /except

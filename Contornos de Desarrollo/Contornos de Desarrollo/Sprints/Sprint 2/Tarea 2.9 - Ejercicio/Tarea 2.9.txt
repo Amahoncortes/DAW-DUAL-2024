@@ -1,0 +1,3 @@
+Aprender cómo funciona el editor de código VSCode, instalarlo e ir replicando lo que el profe hace en el vídeo.
+
+https://www.freecodecamp.org/news/learn-visual-studio-code-to-increase-productivity/

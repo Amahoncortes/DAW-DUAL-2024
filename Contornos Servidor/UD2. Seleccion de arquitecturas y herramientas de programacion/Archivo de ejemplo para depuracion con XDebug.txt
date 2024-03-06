@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <?php
+    echo '<p>Hola, Mundo</p>';
+    echo "<p>Me llamo María</p>";
+    $name= "María";
+    echo $name;
+    echo "<p>¿Te llamas $name?</p>";
+    echo '<p>¿Te llamas ' .$name .'?</p>';
+    ?>
+
+</body>
+
+</html>

@@ -1,0 +1,3 @@
+Cómo nombrar paquetes Java
+
+https://docs.oracle.com/javase/tutorial/java/package/namingpkgs.html

@@ -1,0 +1,54 @@
+// Cuando se carga la página por completo
+window.addEventListener("DOMContentLoaded", () => {
+    console.log("La página se ha cargado por completo.");
+
+    // Obtener elementos del DOM
+    let campo = document.getElementById("campo");
+    let coche1 = document.getElementById("coche1");
+    let coche2 = document.getElementById("coche2");
+    let campoBoton = document.getElementById("iniciar");
+    campoBoton.addEventListener("click", iniciarCarrera);
+    //let tiempo = null; // Variable para almacenar el intervalo de tiempo
+    let ganador = parseInt(prompt("Indica el coche ganador: 1 - 2"));
+    
+    
+    function parar(){
+        for(i=0; i<2000000; i++){}
+    }
+
+    function incremento(){
+        return Math.floor(Math.random() * 50 + 10)
+    }
+    
+    function iniciarCarrera() {
+        // Ancho de la ventana del navegador
+        let anchoVentana = window.innerWidth;
+        // Generar velocidades aleatorias para los coches
+       /*  let velocidadX1 = Math.floor(Math.random() * 50 + 10);
+        let velocidadX2 = Math.floor(Math.random() * 50 + 10); */
+
+        // Obtener el ancho del campo y del coche
+        let campoWidth = campo.clientWidth;
+        let anchoCoche = coche1.clientWidth;
+
+        // Inicializar posiciones de los coches
+        let x1 = 0;
+        let x2 = 0;
+        while (x1 < campoWidth - anchoCoche || x2 < campoWidth - anchoCoche) {
+
+            x1 += incremento();
+            x2 += incremento();
+
+            coche1.style.left = x1 + "px";
+            coche2.style.left = x2 + "px";
+
+            parar();
+        }
+
+        if ((x1 > x2 && ganador === 1) || (x2 > x1 && ganador === 2)) {
+            alert("¡Has ganado!");
+        } else {
+            alert("¡Has perdido!");
+        }
+    }
+})

@@ -1,0 +1,1 @@
+Leer el código Java Yatzy Refactoring TDD kata. Programaremos EN CLASE

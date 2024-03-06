@@ -1,0 +1,1 @@
+Ejemplo de uso de loops, condicionales, arrays estáticos: lee el código de este proyecto: Examen programación Bicipalma: Arrays

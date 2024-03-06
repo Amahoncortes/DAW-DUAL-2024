@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>
+        CatPhotoApp
+    </title>
+</head>
+
+<body>
+    <!--Los elementos de h1 a h6 en el encabezado se usan para indicar la importancia del texto que tienen dentro.
+            A más bajo el número, más importancia, así que h2 es menos importante que h1
+            Usa solo un h1 por página y coloca elementos menos importantes debajo de los más importantes.
+    -->
+
+    <!--HTML5 tiene elementos que identifican diferentes áreas de contenido.
+        Estos elementos hacen tu HTML más fácil de leer y ayudan con la optimización del motor de búsqueda(SEO) y la accesibilidad.
+    Identifica la sección main de esta página añadiendo un <main> de apertura antes del h1, y un </main> de cierre despues del elemento <p></p>
+    -->
+
+    <main>
+
+        <h1>CatPhotoApp</h1>
+        <section>
+            <h2>Cat Photos</h2>
+
+            <!--El elemento p se usa para crear un párrafo de texto en las páginas web.-->
+
+            <!--Comentar permite dejar mensajes sin alterar lo que se enseña en el navegador.
+            También permite desactivar el código.
+            Un comentario en HTML empieza con <!-- , contiene un numero indeterminado de lineas de texto,
+            y termina con-->
+
+            <!--TODO: Add link to cat photos-->
+            <p>See more <a href="https://freecatphotoapp.com" target="_blank">cat photos</a> in our gallery.</p>
+
+            <!--Podemos hacer un link a otra página con el elemento a.
+        Por ejemplo, <a href='https://freecodecamp.org'></a> apuntaría a https://freecodecamp.org.
+        -->
+
+            <!--El texto de un link debe ser colocado entre las etiquetas de apertura y cierre de un elemento a.
+        Por ejemplo, <a href="https://www.freecodecamp.org">click here to go to freeCodeCamp.org</a>
+        es un link con el texto click here to go to freeCodeCamp.org.-->
+
+            <!--Puedes convertir cualquier texto a un enlace, como el texto dentro de un elemento p.
+        Por ejemplo, <p>I think <a href="https://www.freecodecamp.org">freeCodeCamp</a> is great.</p>-->
+
+            <!--<a href="https://freecatphotoapp.com">link to cat pictures</a>-->
+
+            <!--Podemos añadir imágenes a nuestro sitio web usando el elemento <img>
+        Estos elementos tienen una etiqueta de apertura sin una de cierre.
+        -->
+
+            <!--
+        Los atributos HTML son palabras especiales usadas dentro de la etiqueta de apertura de un elemento
+        para controlar el comportamiento del mismo.
+        El atributo src en una imagen especifica la URL de esta (dónde está localizada).
+        Ejemplo: <img src="https://cdn.freecodecamp.org/platform/universal/fcc_secondary.svg">
+        -->
+
+
+            <!--
+        Todas las imágenes deberían tener un atributo alt. 
+        El atributo alt se usa para facilitar la accesibilida a los lectores y se enseña si la imagen no carga correctamente.
+        Ejemplo: <img src="cat.jpg" alt="A cat"> tiene un atributo alt con el texto A cat.
+        -->
+            <a href="https://freecatphotoapp.com">
+                <img src="https://cdn.freecodecamp.org/curriculum/cat-photo-app/relaxing-cat.jpg"
+                    alt="A cute orange cat lying on its back">
+            </a>
+        </section>
+
+        <section>
+            <!--Cuando añadimos un elemento de encabezado de menor rango, se implica que estamos empezando una subsección-->
+            <h2>Cat Lists</h2>
+            <h3>Things cats love:</h3>
+            <!--Listas desordenadas: <ul></ul>-->
+            <ul>
+                <!--Elementos lista: <li></li>-->
+                <li>cat nip</li>
+                <li>laser pointers</li>
+                <li>lasagna</li>
+            </ul>
+
+
+            <!--El elemento figure representa elementos autocontenidos y permite asociar una imagen con una descripción>-->
+            <!--Un elemento figure caption (figcaption) se usa para añadir una descripción que explique el contenido de la imagen dentro del elemento figure.
+                Por ejemplo, <figcaption>A cute cat</figcaption> añade la descripción A cute cat.-->
+            <!--Podemos añadir énfasis a un elemento con la etiqueta <em></em>-->
+            <figure>
+                <img src="https://cdn.freecodecamp.org/curriculum/cat-photo-app/lasagna.jpg"
+                    alt="A slice of lasagna on a plate.">
+                <figcaption>Cats <em>love</em> lasagna.</figcaption>
+            </figure>
+            <h3>Top 3 things cats hate:</h3>
+
+            <!--Listas ordenadas: <ol></ol>-->
+            <ol>
+                <li>flea treatment</li>
+                <li>thunder</li>
+                <li>other cats</li>
+            </ol>
+            <figure>
+                <img src="https://cdn.freecodecamp.org/curriculum/cat-photo-app/cats.jpg"
+                    alt="Five cats looking around a field">
+                <!--El elemento strong se usa para indicar que un texto es importante.-->
+                <figcaption>Cats <strong>hate</strong> other cats</figcaption>
+            </figure>
+        </section>
+
+        <section>
+            <h2>Cat form</h2>
+            <!--Ahora vamos a añadir un formulario para recoger información de usuarios.
+            Esto se hace con el elemento <form></form>-->
+            <!--El atributo action indica donde se debe enviar la información del formulario.The action attribute indicates where form data should be sent.
+                 Por ejemplo, <form action="/submit-url"></form> le dice al navegador
+                 que la información del formulario se debería enviar a /submit-url-->
+            <form action="https://freecatphotoapp.com/submit-cat-photo">
+                <!--El elemento input permite varias formas de recoger información de un formulario.
+                Como los elementos img, input se cierra automáticamente y no necesita etiquetas de cierre.-->
+
+                <!--Hay muchos tipos de input que podemos crear usando el atributo type.
+                Podemos crear un campo de contraseña, un botón de reset, o un botón para dejar a los usuarios
+                seleccionar un archivo de su ordenador-->
+
+                <!--Para que la información de un formulario sea accedida por la ubicación especificada
+                en el atributo action, debemos darle al campo de texto un atributo nombre y asignarle un valor para representar
+                la información que está siendo enviada.
+                Por ejemplo, esta es la sintaxis del campo de texto de una dirección de email:
+                <input type="text" name="email">-->
+
+                <!--Usamos texto placeholder para darle al usuario una pista sobre qué tipo de información
+                debe poner en un recuadro. Por ejemplo:
+                <input type="text" placeholder="Email address"> -->
+
+                <!--Para disuadir a un usuario de enviar el formulario cuando falta 
+                información necesaria, debemos añadir el atributo required a un elemento input.
+                No hay por qué darle un valor a este atributo, solo añadir la palabra required al elemento input.-->
+
+
+                <!--Podemos usar botones radio para preguntas donde solo queremos una respuesta
+                de varias opciones posibles
+                por ejemplo: <input type="radio">cat-->
+
+                <!--El elemento label se usa para asociar el texto de un elemento input
+                con dicho elemento.
+                Por ejemplo, <label><input type="radio" cat</label> causa que al clickar
+                la palabra cat se seleccione el botón radio correspondiente.-->
+
+                <!--El atributo ID se usa para identificar ciertos elementos HTML.
+                Cada atributo id debe tener un valor diferente de todos los otros atributos id
+                de la página.-->
+
+                <!--Si tenemos varios botones radio, todos pueden seleccionarse al mismo tiempo.
+                Para hacer que al seleccionar uno, se deseleccionen los demás, todo el grupo de botones
+                debe tener un atributo name con el mismo valor.-->
+
+                <!--Es importante añadir un atributo value a los botones que tenga el mismo valor que el atributo id-->
+
+                <!--El elemento fieldset se usa para agrupar inputs y labels relacionados en un formato web.
+                El elemento fieldset es a nivel de bloque, es decir, aparece en una nueva línea.-->
+
+                <!--El elemento legend actúa como una descripción del contenido del elemento fieldset.
+                Les da contexto a los usuarios sobre lo que deberían introducir en esa parte del formulario.-->
+
+                <!--Los formularios usan comúnmente checkboxes para preguntas que tengan más de una respuesta
+                Por ejemplo, una checkbox con la opción de tacos: <input type="checkbox">tacos-->
+
+                <!--Hay otra forma de asociar el texto de un elemento input con el propio elemento.
+                Podemos anidar el texto con un elemento label y añadir un atributo for con el mismo valor que el atributo id
+                del elemento input.-->
+
+                <!--Al igual que los botones radio, la información de las checkboxes seleccionadas son pares de 
+                atributos name/value. El atributo value es opciona, pero es una buena práctica incluirlo con cualquier checkbox o botón radio
+                de la página. IMPORTANTE: cada atributo value debe ser igual que el atributo id del mismo elemento.-->
+
+                <!--Para hacer que una checkbox o un botón radio estén seleccionados por defecto, debemos añadir el atributo checked.
+                simplemente es añadir la palabra.-->
+                <fieldset>
+                    <legend>Is your cat an indoor or outdoor cat?</legend>
+                    <label><input id="indoor" type="radio" name="indoor-outdoor" value="indoor" checked> Indoor</label>
+                    <label><input id="outdoor" type="radio" name="indoor-outdoor" value="outdoor"> Outdoor</label>
+                </fieldset>
+
+                <fieldset>
+                    <legend>What's your cat's personality</legend>
+                    <input type="checkbox" id="loving" name="personality" value="loving" checked>
+                    <label for="loving">
+                        Loving
+                    </label>
+                    <input type="checkbox" id="lazy" name="personality" value="lazy">
+                    <label for="lazy">
+                        Lazy
+                    </label>
+                    <input type="checkbox" id="energetic" name="personality" value="energetic">
+                    <label for="energetic">
+                        Energetic
+                    </label>
+                </fieldset>
+
+                <input type="text" name="catphotourl" placeholder="cat photo URL" required>
+
+                <!--Usa el elemento button para crear un botón que se pueda clickar.
+                    Por ejemplo, <button>Click Here</button> crea un botón con el texto Click Here
+                -->
+
+                <!--Tanto el elemento input como el elemento button son elementos inline, 
+                es decir, que no aparecen en una línea nueva, y por esto aparecen los dos pegados uno al lado
+                del otro. Es confuso confiar en los comportamientos por defecto de los elementos, 
+                así que vamos a añadir el atributo type con el valor submit a nuestro botón.-->
+                <button type="submit">Submit</button>
+
+
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>
+            No Copyright - <a href="https://www.freecodecamp.org">freeCodeCamp.org</a>
+        </p>
+    </footer>
+
+    <!--En el paso previo, hemos puesto h1, h2, el comentario, y el elemento p dentro del elemento main.
+        Esto se llama anidación.
+        Los elementos anidados deben colocarse dos espacios a la derecha del elemento al que están anidados. 
+        Este espaciado se llama indentación y se usa para hacer el HTML más fácil de leer.
+        En Visual Studio Code, podemos indentar HTML, CSS y JavaScript usando el shortcut Shift + Alt + F
+    -->
+</body>
+
+</html>
