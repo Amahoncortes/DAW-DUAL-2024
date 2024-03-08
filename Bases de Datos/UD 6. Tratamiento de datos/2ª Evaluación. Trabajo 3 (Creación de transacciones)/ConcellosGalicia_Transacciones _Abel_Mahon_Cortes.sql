@@ -41,8 +41,6 @@ START TRANSACTION;
 -- *******************************************************************************************
 -- TABLA Provincia
 -- *******************************************************************************************
--- Hacer borrado completo de los datos de la tabla
-
 -- Ejercicio 2. Insertar datos iniciales
 INSERT INTO Provincia (nombre) VALUES ('A Coruña');
 INSERT INTO Provincia (nombre) VALUES ('Lugo');
@@ -92,6 +90,9 @@ COMMIT;
 
 -- Ejercicio 14.Comprobar los valores que hay en la tabla
 SELECT * FROM Provincia;
+
+-- Ponemos Provincia vacía de nuevo para que no dé errores ni conflictos una vez finalizado el ejercicio
+DELETE FROM Provincia;
 #*******************************************************************************************
 #		TABLA Comarca
 #*******************************************************************************************
