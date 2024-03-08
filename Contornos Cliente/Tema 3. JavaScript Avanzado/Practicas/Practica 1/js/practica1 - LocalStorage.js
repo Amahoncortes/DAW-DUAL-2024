@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     console.log("La pagina ha terminado de cargarse");
 
-    //Recoger todos los cuadros de texto y alformulario
+    //Recoger todos los cuadros de texto y el formulario
     const formulario = document.getElementById("crearVehiculos"); //formulario
     const modelo = document.getElementById("modelo");
     const marca = document.getElementById("marca");
@@ -12,14 +12,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const buscar = document.getElementById('buscar');
     const buscarModelo = document.getElementById('buscarModelo');
     const divVehiculosBuscados = document.getElementById("divVehiculosBuscados");
-    //Hacemos una referencia al botón que vacia el almacén
-    const limpiarAlmacen = document.getElementById('clearLocalStorage');
-
+    //Hacemos una referencia al botón que borra los coches
+    const borrarCoche = document.getElementById('removeCoche');
+    const btnBorrarCoches = document.getElementById("borrar");
     //Evitamos que, al pulsar submit, se envíe el formulario, y creamos
     //un vehiculo con todas sus propiedades
     formulario.addEventListener("submit", e => {
         e.preventDefault();
-        crearVehiculos();
+        guardarVehiculos();
     });
 
     //Al pulsar mostrar, vaciamos el contenido de divVehiculos
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     buscar.addEventListener("submit", e => {
         e.preventDefault();
-        divVehiculos.innerHTML = "";
+        divVehiculosBuscados.innerHTML = "";
 
         if (localStorage.getItem(buscarModelo.value)) {
             const vehiculo = JSON.parse(localStorage.getItem(buscarModelo.value));
@@ -64,9 +64,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    limpiarAlmacen.addEventListener('click', () => {
-        localStorage.clear(); // Limpia todos los datos del localStorage
-        console.log('Coches eliminados.');
+    btnBorrarCoches.addEventListener('click', () => {
+        if (localStorage.getItem(borrarCoche.value)) {
+            localStorage.removeItem(borrarCoche.value);
+            console.log("Coche eliminado. Total de coches:", localStorage.length);
+        } else {
+            console.error('No se encontró ningún coche de ese modelo.');
+        }
     });
 
 
@@ -79,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
     utilizando los métodos de creación de nodos de la estructura DOM.
     */
 
-    function crearVehiculos() {
+    function guardarVehiculos() {
         // Comprobamos que los elementos están definidos
         if (modelo?.value && marca?.value && precio?.value && km?.value) {
             const vehiculo = new Vehiculo(modelo.value, marca.value, precio.value, km.value);
