@@ -10,6 +10,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const listaC = document.getElementById("listaC");
     const listaE = document.getElementById("listaE");
 
+
     /**2. Al introducir los valores en el cuadro de texto deben aparecer asteriscos
      *en lugar del valor introducido.  */
     // Agregar eventos oninput para entrada y precio
