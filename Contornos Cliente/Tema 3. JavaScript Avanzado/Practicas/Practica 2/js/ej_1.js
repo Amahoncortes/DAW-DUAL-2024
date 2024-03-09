@@ -106,8 +106,11 @@ document.addEventListener("DOMContentLoaded", function () {
     */
 
     function guardarAlumnos() {
+        
+
         //Comprobamos que los elementos estén definidos
         if (nombre?.value && direccion?.value && dni?.value) {
+        
             //Si lo están , creamos un nuevo objeto con los valores del formulario
             const alumno = new Alumno(nombre.value, direccion.value, dni.value);
             //y lo metemos en el almacenamiento local
