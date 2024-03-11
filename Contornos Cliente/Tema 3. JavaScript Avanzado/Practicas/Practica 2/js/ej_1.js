@@ -48,17 +48,41 @@ document.addEventListener("DOMContentLoaded", function () {
     //Para meterle información posteriormente
     mostrar.addEventListener("click", () => {
         divAlumnos.innerHTML = "";
-        const ul = document.createElement("ul");
-        divAlumnos.appendChild(ul);
+        const table = document.createElement("Table");
+        divAlumnos.appendChild(table);
+        //const ul = document.createElement("ul");
+        //divAlumnos.appendChild(ul);
         //Recorremos LocalStorage
+        //Crear fila del encabezado
+        const headerRow = table.insertRow();
+        const headers = ["Alumno", "Nombre", "Direccion", "DNI"];
+        headers.forEach(headerText => {
+            const th = document.createElement("th");
+            const text = document.createTextNode(headerText);
+            th.appendChild(text);
+            headerRow.appendChild(th);
+        });
+
         for (let i = 0; i < localStorage.length; i++) {
             const alumno = JSON.parse(localStorage.getItem(localStorage.key(i)));
-            const li = document.createElement("li");
+            const fila = table.insertRow();
+            fila.addEventListener('click', () => {
+                document.getElementById("addNombre").value = alumno.nombre;
+                document.getElementById("addDireccion").value = alumno.direccion;
+                document.getElementById("addDni").value = alumno.dni;
+            });
+
+            const rowData = [i + 1, alumno.nombre, alumno.direccion, alumno.dni];
+            rowData.forEach(text => {
+                const celda = fila.insertCell();
+                celda.appendChild(document.createTextNode(text));
+            });
+            /* const li = document.createElement("li");
             ul.appendChild(li);
             li.innerHTML =
                 `Nombre: ${alumno.nombre};
                  Direccion: ${alumno.direccion};
-                dni: ${alumno.dni}`;
+                dni: ${alumno.dni}`; */
             console.log("Alumnos mostrados correctamente.");
         }
     });
@@ -106,11 +130,11 @@ document.addEventListener("DOMContentLoaded", function () {
     */
 
     function guardarAlumnos() {
-        
+
 
         //Comprobamos que los elementos estén definidos
         if (nombre?.value && direccion?.value && dni?.value) {
-        
+
             //Si lo están , creamos un nuevo objeto con los valores del formulario
             const alumno = new Alumno(nombre.value, direccion.value, dni.value);
             //y lo metemos en el almacenamiento local
