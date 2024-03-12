@@ -2,6 +2,7 @@ window.addEventListener("DOMContentLoaded", () => {
     console.log("La página ha cargado correctamente.");
 
 
+    localStorage.clear();
     //Referencias
     const formPeliculas = document.getElementById("formpeliculas");
     const titulo = document.getElementById("addTitulo");
@@ -25,7 +26,9 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
     //añado método mostrar para ver si efectivamente hay peliculas guardadas (testeo)
-    mostrar.addEventListener("click", () => {
+    mostrar.addEventListener("click", mostrarPeliculas);
+
+    function mostrarPeliculas() {
         divPeliculas.innerHTML = "";
         const ul = document.createElement("ul");
         divPeliculas.appendChild(ul);
@@ -39,7 +42,7 @@ window.addEventListener("DOMContentLoaded", () => {
                 duracion: ${pelicula.duracion};`
             console.log("Peliculas mostradas correctamente.");
         }
-    });
+    }
 
 
     //añadimos metodo buscar para buscar peliculas por titulo
@@ -81,7 +84,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     botonBorrar.addEventListener("click", () => {
         const peliculaABorrar = borrarPelicula.value;
-        if(localStorage.getItem(peliculaABorrar)){
+        if (localStorage.getItem(peliculaABorrar)) {
             localStorage.removeItem(peliculaABorrar);
             console.log("Pelicula borrada. Total de peliculas: ", localStorage.length);
         } else {
