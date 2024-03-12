@@ -12,6 +12,18 @@ public class Revista extends Biblioteca implements Prestable {
      que devuelve el valor de todos los atributos en una cadena de caracteres.
      */
 
+
+    //Getters y setters
+
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
     @Override
     public String toString() {
         return super.toString() + ", Número: " + numero;
