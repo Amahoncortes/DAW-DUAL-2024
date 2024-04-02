@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="51bb2147-ca6d-4080-8845-a74835398de1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../Contornos Cliente/Examen 2ª Evaluacion/Examen2EvaPractico.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Contornos Cliente/Examen 2ª Evaluacion/SintaxisJavaScript.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Contornos Cliente/Examen 2ª Evaluacion/ejercicio1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Contornos Cliente/Examen 2ª Evaluacion/ejercicio2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Contornos Cliente/Examen 2ª Evaluacion/images/fresa.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Contornos Cliente/Examen 2ª Evaluacion/images/naranjas.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Contornos Cliente/Examen 2ª Evaluacion/images/sandia.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Contornos Cliente/Examen 2ª Evaluacion/images/uvas.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Contornos Cliente/Examen 2ª Evaluacion/js/Clases/Articulo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Contornos Cliente/Examen 2ª Evaluacion/js/Clases/Mamifero.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Contornos Cliente/Examen 2ª Evaluacion/js/Clases/Persona.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Contornos Cliente/Examen 2ª Evaluacion/js/Clases/Vehiculo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Contornos Cliente/Examen 2ª Evaluacion/js/Clases/lineaTicket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Contornos Cliente/Examen 2ª Evaluacion/js/ejercicio_2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Contornos Cliente/Examen 2ª Evaluacion_Abel_Mahon_Cortes.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Contornos Servidor/UD6. Programación orientada a Objetos - POO/Tarea 06.1-sol/sql/1_create_BD_notas.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Contornos Servidor/UD6. Programación orientada a Objetos - POO/Tarea 06.1-sol/sql/2_Insert_roles.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Contornos Servidor/UD6. Programación orientada a Objetos - POO/Tarea 06.1-sol/sql/3_CreateUserNotasDB.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Examen_2ª_Evaluacion_Abel_Mahon_Cortes.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Contornos Cliente/Tema 3. JavaScript Avanzado/Practicas/Practica 1/js/practica1.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../Contornos Cliente/Tema 3. JavaScript Avanzado/Practicas/Practica 1/js/practica1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Contornos Servidor/UD7_Tarea 07.1_Abel_Mahon.zip" beforeDir="false" afterPath="$PROJECT_DIR$/../../Tarea07.1-Sol-main.zip" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 1
+}]]></component>
+  <component name="ProjectId" id="2eYD3YGj9DKBYRaoO07qA4DWL0R" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/a20abelmc/Desktop/DAW-DUAL-2024/Programación/Tema 11 - Lectura y escritura de informacion"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="51bb2147-ca6d-4080-8845-a74835398de1" name="Changes" comment="" />
+      <created>1712072419261</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1712072419261</updated>
+    </task>
+    <servers />
+  </component>
+</project>

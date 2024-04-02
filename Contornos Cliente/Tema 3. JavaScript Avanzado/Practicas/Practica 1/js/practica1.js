@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //Recoger todos los cuadros de texto y alformulario
     const formulario = document.forms["formulario"];
-    const modelo = document.getElementById("modelo");
+    const querySelector = document.getElementById("modelo");
     const marca = document.getElementById("marca");
     const precio = document.getElementById("precio");
     const km = document.getElementById("km");
