@@ -20,10 +20,9 @@ public abstract class Aparato {
     public Aparato() {
     }
 
-    public Aparato(double consumo, double potencia, boolean apagado) {
+    public Aparato(double consumo, double potencia) {
         this.consumo = consumo;
         this.potencia = potencia;
-        this.apagado = apagado;
     }
 
     public double getConsumo() {
