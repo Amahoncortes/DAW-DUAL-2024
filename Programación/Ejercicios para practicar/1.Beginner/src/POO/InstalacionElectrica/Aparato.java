@@ -10,59 +10,43 @@ package POO.InstalacionElectrica;
  * Deberá ser posible consultar el consumo total de la instalación.
  * */
 
-public abstract class Aparato {
-    private double consumo;
+public class Aparato {
+    private static double consumoTotal; //Se usa static para que la variable pertenezca
+    //a la clase, en lugar de a sus instancias (todas las instancias comparten el valor de
+    //dicha variable)
     private double potencia;
-    private boolean apagado = true;
+    private String unidadEnergia;
 
-    private double consumoTotalInstalacion;
+    //Por defecto, el aparato está apagado
+    private boolean estado = false;
 
-    public Aparato() {
-    }
-
-    public Aparato(double consumo, double potencia) {
-        this.consumo = consumo;
+    public Aparato(double potencia, String unidadEnergia) {
         this.potencia = potencia;
+        this.unidadEnergia = unidadEnergia;
     }
 
-    public double getConsumo() {
-        return consumo;
+    public String getUnidadEnergia() {
+        return unidadEnergia;
     }
 
-    public void setConsumo(double consumo) {
-        this.consumo = consumo;
+    //Métodos
+
+
+    public boolean isOn() {
+        return estado;
     }
 
-    public double getPotencia() {
-        return potencia;
-    }
-
-    public void setPotencia(double potencia) {
-        this.potencia = potencia;
-    }
-
-    public double getConsumoTotalInstalacion() {
-        return consumoTotalInstalacion;
-    }
-
-    public void setConsumoTotalInstalacion(double consumoTotalInstalacion) {
-        this.consumoTotalInstalacion = consumoTotalInstalacion;
-    }
-
-    public void encender() {
-        apagado = !apagado;
-        consumoTotalInstalacion += getPotencia();
-    }
-
-    public void apagar() {
-        if (apagado) {
-            System.out.println("Error. Aparato ya apagado");
+    public void cambiarEstado() {
+        this.estado = !this.estado;
+        if (this.isOn()) {
+            this.consumoTotal += this.potencia;
         } else {
-            System.out.println("Apagando aparato..." + "\n"
-                    + "Aparato apagado.");
+            this.consumoTotal -= this.potencia;
         }
     }
 
-
+    public double calcularConsumoTotal() {
+        return consumoTotal;
+    }
 
 }
