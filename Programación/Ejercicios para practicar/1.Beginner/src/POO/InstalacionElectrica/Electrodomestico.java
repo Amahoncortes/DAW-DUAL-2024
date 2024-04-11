@@ -65,8 +65,8 @@ public class Electrodomestico {
     }
 
     private char comprobarConsumoEnergetico(char letra) {
-        for (int i = 0; i < letras.length; i++) {
-            if (letra == letras[i]) {
+        for (char c : letras) {
+            if (letra == c) {
                 return letra;
             }
         }
@@ -74,8 +74,8 @@ public class Electrodomestico {
     }
 
     private String comprobarColor(String color) {
-        for (int i = 0; i < colores.length; i++) {
-            if (Objects.equals(color, colores[i])) {
+        for (String cl : colores) {
+            if (Objects.equals(color, cl)) {
                 return color;
             }
         }

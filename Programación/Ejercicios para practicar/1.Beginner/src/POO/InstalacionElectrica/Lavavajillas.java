@@ -2,7 +2,6 @@ package POO.InstalacionElectrica;
 
 public class Lavavajillas extends Electrodomestico {
     private int numServicios;
-    private final int MAX = 12;
 
     public Lavavajillas() {
     }
@@ -13,10 +12,6 @@ public class Lavavajillas extends Electrodomestico {
 
     public Lavavajillas(double precioBase, String color, char consumoEnergetico, double peso) {
         super(precioBase, color, consumoEnergetico, peso);
-    }
-
-    public int getNumServicios() {
-        return numServicios;
     }
 
     public void setNumServicios(int numServicios) {
@@ -65,6 +60,7 @@ public class Lavavajillas extends Electrodomestico {
 
     @Override
     public double precioFinal() {
+        int MAX = 12;
         if(this.numServicios > MAX){
             return super.precioFinal() + 60;
         }

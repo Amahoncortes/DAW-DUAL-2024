@@ -39,7 +39,7 @@ public class Instalacion {
 
         Electrodomestico secadora2 = new Electrodomestico(150, "verde", 'C', 150);
 
-        ArrayList<Electrodomestico> electrodomesticos = new ArrayList<Electrodomestico>();
+        ArrayList<Electrodomestico> electrodomesticos = new ArrayList<>();
         electrodomesticos.add(secadora);
         electrodomesticos.add(lavavajillas);
         electrodomesticos.add(SonyBravia);
@@ -56,7 +56,7 @@ public class Instalacion {
         int precioTotalTelevisores = 0;
         int precioTotalLavavajillas = 0;
         for (Electrodomestico el : electrodomesticos) {
-            if (el.getClass().equals(Television.class)) {
+            if (el instanceof Television) {
                 precioTotalTelevisores += (int) el.precioFinal();
             }
 

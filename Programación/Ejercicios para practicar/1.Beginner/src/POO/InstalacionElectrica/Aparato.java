@@ -14,8 +14,8 @@ public class Aparato {
     private static double consumoTotal; //Se usa static para que la variable pertenezca
     //a la clase, en lugar de a sus instancias (todas las instancias comparten el valor de
     //dicha variable)
-    private double potencia;
-    private String unidadEnergia;
+    private final double potencia;
+    private final String unidadEnergia;
 
     //Por defecto, el aparato está apagado
     private boolean estado = false;
@@ -39,9 +39,9 @@ public class Aparato {
     public void cambiarEstado() {
         this.estado = !this.estado;
         if (this.isOn()) {
-            this.consumoTotal += this.potencia;
+            consumoTotal += this.potencia;
         } else {
-            this.consumoTotal -= this.potencia;
+            consumoTotal -= this.potencia;
         }
     }
 
