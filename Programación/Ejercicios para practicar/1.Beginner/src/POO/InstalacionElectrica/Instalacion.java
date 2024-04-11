@@ -1,6 +1,6 @@
 package POO.InstalacionElectrica;
 
-import org.w3c.dom.ls.LSOutput;
+import java.util.ArrayList;
 
 public class Instalacion {
     public static void main(String[] args) {
@@ -27,5 +27,54 @@ public class Instalacion {
         Lavavajillas lavavajillas = new Lavavajillas(200, "azul", 'D', 25);
         lavavajillas.setNumServicios(13);
         System.out.println("Precio final: " + lavavajillas.precioFinal());
+
+        Television SonyBravia = new Television(300, "rojo", 'B', 10, 41, true);
+        System.out.println("Precio television: " + SonyBravia.precioFinal());
+
+        Television Samsung = new Television(600, "", 'B', 20, 25, false);
+        System.out.println("Precio television: " + Samsung.precioFinal());
+
+        Lavavajillas lavavajillas2 = new Lavavajillas(100, "azul", 'D', 25);
+        lavavajillas.setNumServicios(6);
+
+        Electrodomestico secadora2 = new Electrodomestico(150, "verde", 'C', 150);
+
+        ArrayList<Electrodomestico> electrodomesticos = new ArrayList<Electrodomestico>();
+        electrodomesticos.add(secadora);
+        electrodomesticos.add(lavavajillas);
+        electrodomesticos.add(SonyBravia);
+        electrodomesticos.add(Samsung);
+        electrodomesticos.add(lavavajillas2);
+        electrodomesticos.add(secadora2);
+        electrodomesticos.add(secadora);
+        electrodomesticos.add(Samsung);
+        electrodomesticos.add(secadora2);
+        electrodomesticos.add(secadora);
+
+        int precioTotal = 0;
+        int precioTotalElectrodomesticos = 0;
+        int precioTotalTelevisores = 0;
+        int precioTotalLavavajillas = 0;
+        for (Electrodomestico el : electrodomesticos) {
+            if (el.getClass().equals(Television.class)) {
+                precioTotalTelevisores += (int) el.precioFinal();
+            }
+
+            if (el.getClass().equals(Lavavajillas.class)) {
+                precioTotalLavavajillas += (int) el.precioFinal();
+            }
+
+            if (el.getClass().equals(Electrodomestico.class)) {
+                precioTotalElectrodomesticos += (int) el.precioFinal();
+            }
+
+            precioTotal += (int) el.precioFinal();
+        }
+        System.out.println("Precio total de todos los electrodomesticos: " + precioTotalElectrodomesticos);
+        System.out.println("Precio total de todos los lavavajillas: " + precioTotalLavavajillas);
+        System.out.println("Precio total de todos los televisores: " + precioTotalTelevisores);
+        System.out.println("Precio total: " + precioTotal);
     }
+
+
 }
