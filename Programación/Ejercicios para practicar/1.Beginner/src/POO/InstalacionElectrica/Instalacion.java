@@ -60,14 +60,15 @@ public class Instalacion {
                 precioTotalTelevisores += (int) el.precioFinal();
             }
 
-            if (el.getClass().equals(Lavavajillas.class)) {
+            if (el instanceof Lavavajillas) {
                 precioTotalLavavajillas += (int) el.precioFinal();
             }
 
-            if (el.getClass().equals(Electrodomestico.class)) {
+            if (el != null) {
                 precioTotalElectrodomesticos += (int) el.precioFinal();
             }
 
+            assert el != null;
             precioTotal += (int) el.precioFinal();
         }
         System.out.println("Precio total de todos los electrodomesticos: " + precioTotalElectrodomesticos);
