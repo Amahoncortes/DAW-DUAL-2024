@@ -1,6 +1,7 @@
 package POO.Parte2.Empleados.Empleado;
 
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Directivo extends Empleado {
@@ -8,7 +9,7 @@ public class Directivo extends Empleado {
     private String cargo;
     private String departamento;
 
-    public Directivo(String nombre, double salario, Date fechaIncorporacion, String cargo, String departamento) {
+    public Directivo(String nombre, double salario, LocalDate fechaIncorporacion, String cargo, String departamento) {
         super(nombre, salario, fechaIncorporacion);
         this.cargo = cargo;
         this.departamento = departamento;

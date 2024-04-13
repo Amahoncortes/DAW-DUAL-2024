@@ -2,14 +2,15 @@ package POO.Parte2.Empleados.Empleado.Operario;
 
 import POO.Parte2.Empleados.Empleado.Empleado;
 
-import java.util.Date;
+import java.time.LocalDate;
+
 
 
 public class Operario extends Empleado {
     private String area;
     private String nave;
 
-    public Operario(String nombre, double salario, Date fechaIncorporacion, String area, String nave) {
+    public Operario(String nombre, double salario, LocalDate fechaIncorporacion, String area, String nave) {
         super(nombre, salario, fechaIncorporacion);
         this.area = area;
         this.nave = nave;

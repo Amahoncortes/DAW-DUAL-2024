@@ -1,11 +1,12 @@
 package POO.Parte2.Empleados.Empleado.Operario;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Tecnico extends Operario {
     private String seccion;
 
-    public Tecnico(String nombre, double salario, Date fechaIncorporacion, String area, String nave, String seccion) {
+    public Tecnico(String nombre, double salario, LocalDate fechaIncorporacion, String area, String nave, String seccion) {
         super(nombre, salario, fechaIncorporacion, area, nave);
         this.seccion = seccion;
     }

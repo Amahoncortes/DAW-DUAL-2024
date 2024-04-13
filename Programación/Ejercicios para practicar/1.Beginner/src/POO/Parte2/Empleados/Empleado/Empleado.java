@@ -1,14 +1,16 @@
 package POO.Parte2.Empleados.Empleado;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class Empleado {
     private String nombre;
     private double salario;
-    private Date fechaIncorporacion;
+    private LocalDate fechaIncorporacion;
 
-    public Empleado(String nombre, double salario, Date fechaIncorporacion) {
+    public Empleado(String nombre, double salario, LocalDate fechaIncorporacion) {
         this.nombre = nombre;
         this.salario = salario;
         this.fechaIncorporacion = fechaIncorporacion;
@@ -30,18 +32,18 @@ public class Empleado {
         this.salario = salario;
     }
 
-    public Date getFechaIncorporacion() {
+    public LocalDate getFechaIncorporacion() {
         return fechaIncorporacion;
     }
 
-    public void setFechaIncorporacion(Date fechaIncorporacion) {
+    public void setFechaIncorporacion(LocalDate fechaIncorporacion) {
         this.fechaIncorporacion = fechaIncorporacion;
     }
 
     @Override
     public String toString() {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        String fechaFormateada = sdf.format(fechaIncorporacion);
+      DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String fechaFormateada = fechaIncorporacion.format(formatter);
         return "--------------------------" + "\n" +
                 this.getClass().getSimpleName() + "\n" +
                 "nombre: " + nombre + "\n" +
