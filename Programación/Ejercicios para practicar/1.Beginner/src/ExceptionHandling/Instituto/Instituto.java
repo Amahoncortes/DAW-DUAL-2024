@@ -22,7 +22,6 @@ import ExceptionHandling.Instituto.Persona.Miembro;
 import ExceptionHandling.Instituto.Persona.Profesor;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -31,7 +30,7 @@ import java.util.Scanner;
 
 public class Instituto {
     //• Cree un listado de miembros.
-    static DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -114,20 +113,32 @@ public class Instituto {
                         break;
                     case 4:
                         int edadTotal = 0;
-                        int contador = 0;
+                        int contEdadMediaProfesores = 0;
 
                         System.out.println("Mostrando edad media de los profesores...");
-                        for (int i = 0; i < miembros.size() ; i++) {
-                            if(miembros.get(i).getClass().getSimpleName().equalsIgnoreCase("profesor")){
-                                edadTotal += miembros.get(i).getEdad();
-                                contador++;
+                        for (Miembro miembro : miembros) {
+                            if (miembro instanceof Profesor) {
+                                edadTotal += miembro.getEdad();
+                                contEdadMediaProfesores++;
                             }
                         }
-                        System.out.println("Edad media " +edadTotal/contador);
+                        System.out.println("Edad media " + edadTotal / contEdadMediaProfesores);
 
                         break;
 
                     case 5:
+                        double notaTotal = 0;
+                        int contNotaMediaAlumnosDAM = 0;
+                        System.out.println("Mostrando nota media de los alumnos...");
+                        for (Miembro miembro : miembros) {
+                            if (miembro instanceof Alumno && ((Alumno) miembro).getCiclo().equalsIgnoreCase("dam")) {
+                                notaTotal += ((Alumno) miembro).getMediaNotas();
+                                contNotaMediaAlumnosDAM++;
+                            }
+                        }
+                        System.out.println("Nota media " + notaTotal / contNotaMediaAlumnosDAM);
+
+
                         break;
 
                     case 6:
@@ -137,8 +148,6 @@ public class Instituto {
                         break;
                     default:
                         System.out.println("Introduce un número entre 1 y 7");
-
-
                 }
                 //****************FIN DE MENU****************
             } catch (InputMismatchException e) {
@@ -146,113 +155,5 @@ public class Instituto {
                 opcion.next();
             }
         }
-
-
     }
-
-    private static Alumno crearAlumno() {
-        String dni = "";
-        String nombre = "";
-        int edad = 0;
-        String direccion = "";
-        LocalDate fechaIncorporacion = null;
-        String ciclo = "";
-        double mediaNotas = 0.0;
-        double importeMatricula = 0.0;
-
-
-        try {
-            System.out.println("Dame el dni");
-            dni = sc.next(); // Leer el DNI
-            sc.nextLine(); // Limpiar el búfer de entrada
-
-            System.out.println("Dame el nombre");
-            nombre = sc.nextLine();
-
-            System.out.println("Dame la edad");
-            edad = sc.nextInt();
-            sc.nextLine(); // Limpiar el búfer de entrada
-
-            System.out.println("Dame la direccion");
-            direccion = sc.nextLine();
-
-            System.out.println("Dame la fecha de incorporacion");
-            fechaIncorporacion = LocalDate.parse(sc.next(), dtf);
-            sc.nextLine();
-
-            System.out.println("Dame el ciclo");
-            ciclo = sc.next();
-            sc.nextLine();
-
-            System.out.println("Dame la media de notas");
-            mediaNotas = sc.nextDouble();
-
-            System.out.println("Dame el importe de la matricula");
-            importeMatricula = sc.nextDouble();
-
-        } catch (DateTimeParseException dt) {
-            System.out.println("Formato de fecha incorrecto");
-        } catch (InputMismatchException e) {
-            System.out.println("Formato de entrada incorrecto");
-        }
-        return new Alumno(dni, nombre, edad, direccion, fechaIncorporacion, ciclo, mediaNotas, importeMatricula);
-    }
-
-
-    private static Profesor crearProfesor() {
-
-        String dni = "";
-        String nombre = "";
-        int edad = 0;
-        String direccion = "";
-        LocalDate fechaIncorporacion = null;
-        String tipoJornada = "";
-        double sueldo = 0.0;
-        Especialidad especialidad = null;
-        try {
-            System.out.println("Dame el dni");
-            dni = sc.next(); // Leer el DNI
-            sc.nextLine(); // Limpiar el búfer de entrada
-
-            System.out.println("Dame el nombre");
-            nombre = sc.nextLine();
-
-            System.out.println("Dame la edad");
-            edad = sc.nextInt();
-            sc.nextLine(); // Limpiar el búfer de entrada
-
-            System.out.println("Dame la direccion");
-            direccion = sc.nextLine();
-
-            System.out.println("Dame la fecha de incorporacion");
-            fechaIncorporacion = LocalDate.parse(sc.next(), dtf);
-            sc.nextLine();
-
-            System.out.println("Dame el tipo de jornada");
-            tipoJornada = sc.next();
-            sc.nextLine();
-
-            System.out.println("Dame el sueldo");
-            sueldo = sc.nextDouble();
-            sc.nextLine();
-
-            System.out.println("Creando especialidad... ");
-            System.out.println("Introduce id: ");
-            String id = sc.next();
-            sc.nextLine();
-
-            System.out.println("Introduce un nombre");
-            String nombreEspecialidad = sc.nextLine();
-            especialidad = new Especialidad(id, nombreEspecialidad);
-
-        } catch (DateTimeParseException dt) {
-            System.out.println("Formato de fecha incorrecto");
-        } catch (InputMismatchException e) {
-            System.out.println("Formato de entrada incorrecto");
-        }
-
-        return new Profesor(dni, nombre, edad, direccion, fechaIncorporacion, tipoJornada, sueldo, especialidad);
-    }
-
-//miembros.add(new Profesor("23456789B", "Carlos Sánchez Martínez", 30, "Avenida Libertad 24", LocalDate.parse("10/10/1992", dtf), "completo", 8.0, "Ciencias Ambientales"));
 }

@@ -46,7 +46,7 @@ public abstract class Miembro extends Persona {
      * Calcula la diferencia entre dos fechas, la fecha de incorporación y la actual
      * */
     public Period calcularPeriodo() {
-        LocalDate fechaIncorporacion = this.getFechaIncorporacion();
+        LocalDate fechaIncorporacion = this.fechaIncorporacion;
         LocalDate fechaActual = LocalDate.now();
         return Period.between(fechaIncorporacion, fechaActual);
     }
