@@ -20,7 +20,6 @@ public class GestionEmpleados {
         //Crear un array de 7 elementos
         Empleado[] emp = new Empleado[7];
 
-        //Al usar parse, nos enfrentamos a la posibilidad de que haya un ParseException, por lo que hay que usar un try-catch que cubra esa excepcion.
         LocalDate d = LocalDate.parse("01/01/1970", formatter);
         emp[0] = new Empleado("Abel", 1500, LocalDate.parse("05/07/1995", formatter));
         emp[1] = new Operario("Rubén", 2000, LocalDate.parse("02/08/1992", formatter), "Area 1", "nave 1");
