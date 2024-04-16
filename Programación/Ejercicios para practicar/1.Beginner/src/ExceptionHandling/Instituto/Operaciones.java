@@ -11,6 +11,7 @@ import java.util.Scanner;
 
 public class Operaciones {
     static Scanner sc = new Scanner(System.in);
+    static DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     public static Alumno crearAlumno() {
         String dni, nombre, direccion, ciclo;
@@ -35,7 +36,7 @@ public class Operaciones {
                 sc.nextLine();
 
                 System.out.println("Dame la fecha de incorporacion");
-                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
                 LocalDate fechaIncorporacion = LocalDate.parse(sc.nextLine(), dtf);
 
                 // Si llegamos aquí, todos los datos son válidos

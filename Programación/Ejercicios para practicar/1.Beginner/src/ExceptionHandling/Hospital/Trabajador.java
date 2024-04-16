@@ -63,7 +63,7 @@ public class Trabajador extends Persona {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         String fechaFormateada = dtf.format(fechaIncorporacion);
         return super.toString() + "\n" +
-                "Fecha de incorporación: " + fechaIncorporacion + "\n" +
+                "Fecha de incorporación: " + fechaFormateada + "\n" +
                 "Area sanitaria: " + areaSanitaria + "\n" +
                 "Cargo que ocupa: " + cargoHospital + "\n" +
                 "Salario: " + salario;

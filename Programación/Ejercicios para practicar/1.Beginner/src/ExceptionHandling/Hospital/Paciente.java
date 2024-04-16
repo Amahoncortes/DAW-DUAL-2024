@@ -19,11 +19,10 @@ public class Paciente extends Persona {
         this.registro = new HashMap<>();
     }
 
-    public Paciente(String dni, String nombre, int edad, String direccion, LocalDate fechaIngreso, String patologia, HashMap<Integer, Ingreso> registro) {
+    public Paciente(String dni, String nombre, int edad, String direccion, LocalDate fechaIngreso, String patologia) {
         super(dni, nombre, edad, direccion);
         this.fechaIngreso = fechaIngreso;
         this.patologia = patologia;
-        this.registro = registro;
     }
 
     public LocalDate getFechaIngreso() {
@@ -42,12 +41,36 @@ public class Paciente extends Persona {
         this.patologia = patologia;
     }
 
-    public HashMap<Integer, Ingreso> getRegistro() {
-        return registro;
-    }
-
     public void setRegistro(HashMap<Integer, Ingreso> registro) {
         this.registro = registro;
+    }
+
+    public double calcularCosteAnual(){
+        double costeTotal = 0;
+
+        for (Persona persona : personas) {
+            if (persona instanceof Trabajador) {
+                costeTotal = ((Trabajador) persona).getSalario() * 14;
+                double plus = costeTotal * 0.05;
+                costeTotal += plus;
+                System.out.println(persona.getNombre() + "Coste anual de: " + costeTotal + " euros.");
+            }
+
+            if (persona instanceof Paciente) {
+                HashMap<Integer, Ingreso> registro = ((Paciente) persona).getRegistro();
+                for (int i = 0; i < registro.size(); i++) {
+                    Ingreso ingreso = registro.get(i);
+                    costeTotal = calcularPeriodo(ingreso);
+                    costeTotal *= 700;
+
+                    if (ingreso.getArea().getEspecialidad().equalsIgnoreCase("traumatologia")) {
+                        double plus = costeTotal * 0.02;
+                        costeTotal += plus;
+                    }
+                }
+                System.out.println(persona.getNombre() + "Coste anual de: " + costeTotal + " euros.");
+            }
+        }
     }
 
     @Override

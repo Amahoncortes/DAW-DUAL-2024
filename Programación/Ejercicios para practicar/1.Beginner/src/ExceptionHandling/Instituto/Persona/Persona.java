@@ -61,4 +61,6 @@ public abstract class Persona {
                 "Edad: " + edad + "\n" +
                 "Direccion: " + direccion;
     }
+
+
 }

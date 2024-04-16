@@ -1,5 +1,11 @@
 package ExceptionHandling.Hospital;
 
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.HashMap;
+
 //datos propios de persona (el DNI,
 //el nombre, la edad y la dirección)
 public abstract class Persona {
@@ -66,5 +72,15 @@ public abstract class Persona {
                 "Nombre: " + nombre + "\n" +
                 "Edad: " + edad + "\n" +
                 "Direccion: " + direccion;
+    }
+
+
+    public abstract double costeAnual();
+
+    public long calcularPeriodo(Ingreso ingreso) {
+        LocalDate fechaDeEntrada = ingreso.getFechaIngreso();
+        LocalDate fechaDeSalida = ingreso.getFechaSalida();
+        Period p = Period.between(fechaDeEntrada, fechaDeSalida);
+        return ChronoUnit.DAYS.between(fechaDeEntrada, fechaDeSalida);
     }
 }

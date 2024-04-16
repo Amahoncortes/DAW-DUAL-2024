@@ -1,47 +1,94 @@
 package ExceptionHandling.Hospital;
 
 import java.time.LocalDate;
-import java.time.Period;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.time.format.DateTimeParseException;
+import java.util.*;
 
 public class Operaciones {
-    public void costeAnual(ArrayList<Persona> personas) {
-        double costeTotal = 0;
+    static Scanner sc = new Scanner(System.in);
+    static DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-        for (Persona persona : personas) {
-            if (persona instanceof Trabajador) {
-                costeTotal = ((Trabajador) persona).getSalario() * 14;
-                double plus = costeTotal * 0.05;
-                costeTotal += plus;
-                System.out.println(persona.getNombre() + "Coste anual de: " + costeTotal + " euros.");
+    public static Trabajador altaTrabajador(ArrayList<Area> area) {
+        //Primero le pones los datos
+        String dni, nombre, direccion;
+        int edad;
+        Area areaSelecc;
+        int idArea;
+        LocalDate fechaIncorporacion;
+        String cargoHospital;
+        double salario;
+
+        boolean datosValidos;
+
+        do {
+            try {
+                System.out.println("Proporcione el dni, el nombre, la edad y la direccion");
+                dni = sc.nextLine();
+                nombre = sc.nextLine();
+                edad = sc.nextInt();
+                sc.nextLine();
+                direccion = sc.nextLine();
+
+                System.out.println("Areas disponibles: " + area.toString());
+                System.out.println("Introducir id de area");
+                idArea = sc.nextInt();
+                sc.nextLine();
+                areaSelecc = area.get(idArea);
+
+                System.out.println("Introduzca nueva fecha de incorporacion al hospital: ");
+                fechaIncorporacion = LocalDate.parse(sc.nextLine(), dtf);
+
+                System.out.println("Defina nuevo cargo y salario:");
+                cargoHospital = sc.nextLine();
+                salario = sc.nextDouble();
+                sc.nextLine();
+
+                datosValidos = true;
+                return new Trabajador(dni, nombre, edad, direccion, fechaIncorporacion, areaSelecc, cargoHospital, salario);
+            } catch (DateTimeParseException | InputMismatchException e) {
+                datosValidos = false;
+                System.out.println("ERROR: los datos introducidos no son correctos.");
             }
-
-            if (persona instanceof Paciente) {
-                HashMap<Integer, Ingreso> registro = ((Paciente) persona).getRegistro();
-                for (int i = 0; i < registro.size(); i++) {
-                    Ingreso ingreso= registro.get(i);
-                    costeTotal = calcularPeriodo(ingreso);
-                    costeTotal *= 700;
-
-                    if (ingreso.getArea().getEspecialidad().equalsIgnoreCase("traumatologia")) {
-                        double plus = costeTotal * 0.02;
-                        costeTotal += plus;
-                    }
-                }
-                System.out.println(persona.getNombre() + "Coste anual de: " + costeTotal + " euros.");
-            }
-        }
+        } while (!datosValidos);
+        return null;
     }
 
-    public long calcularPeriodo(Ingreso ingreso) {
-        LocalDate fechaDeEntrada = ingreso.getFechaIngreso();
-        LocalDate fechaDeSalida = ingreso.getFechaSalida();
-        Period p = Period.between(fechaDeEntrada, fechaDeSalida);
-        return ChronoUnit.DAYS.between(fechaDeEntrada, fechaDeSalida);
+
+    public static Paciente altaPaciente(HashMap<Integer, Ingreso> registro) {
+        String dni, nombre, direccion, patologia;
+        int edad;
+        int idRegistro;
+        LocalDate fechaIngreso;
+        LocalDate fechaSalida;
+        boolean datosValidos = false;
+        registro = new HashMap<>();
+
+        do {
+            try {
+                System.out.println("Introduzca el dni, el nombre, la edad y la dirección");
+                dni = sc.nextLine();
+                nombre = sc.nextLine();
+                edad = sc.nextInt();
+                sc.nextLine();
+                direccion = sc.nextLine();
+
+                System.out.println("Registros disponibles" + registro);
+                System.out.println("Introduzca id del registro y la patologia ");
+                idRegistro = sc.nextInt();
+                sc.nextLine(); // Limpiar el buffer del scanner
+                patologia = sc.nextLine();
+
+                System.out.println("Introduzca nueva fecha de incorporacion al hospital: ");
+                fechaIngreso = LocalDate.parse(sc.nextLine(), dtf);
+                datosValidos = true;
+
+                return new Paciente(dni, nombre, edad, direccion, fechaIngreso, patologia);
+            } catch (DateTimeParseException | InputMismatchException e) {
+                datosValidos = false;
+                System.out.println("ERROR: los datos introducidos no son correctos");
+            }
+        } while (!datosValidos);
+        return null;
     }
-
-
 }
