@@ -16,7 +16,7 @@ public class Profesor extends Miembro {
         super();
         this.tipoJornada = "Completa";
         this.sueldo = 1500;
-        this.especialidad = new Especialidad("1", "Fisica Aplicada");
+        this.especialidad = new Especialidad(1, "Fisica Aplicada");
     }
 
     public Profesor(String dni, String nombre, int edad, String direccion, LocalDate fechaIncorporacion, String tipoJornada, double sueldo, Especialidad especialidad) {

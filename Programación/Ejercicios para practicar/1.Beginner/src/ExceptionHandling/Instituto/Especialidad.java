@@ -2,22 +2,22 @@ package ExceptionHandling.Instituto;
 
 public class Especialidad {
     //De las especialidades hay que almacenar su identificador y su nombre.
-    private String id;
+    private int id;
     private String nombre;
 
     public Especialidad() {
     }
 
-    public Especialidad(String id, String nombre) {
+    public Especialidad(int id, String nombre) {
         this.id = id;
         this.nombre = nombre;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
