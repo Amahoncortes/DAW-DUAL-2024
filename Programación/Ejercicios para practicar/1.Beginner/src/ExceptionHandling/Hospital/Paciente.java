@@ -1,6 +1,7 @@
 package ExceptionHandling.Hospital;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 //En el caso de los pacientes, se almacenarán los datos propios de persona (el DNI,
@@ -45,32 +46,28 @@ public class Paciente extends Persona {
         this.registro = registro;
     }
 
-    public double calcularCosteAnual(){
+    public HashMap<Integer, Ingreso> getRegistro() {
+        return registro;
+    }
+
+    public double calcularCosteAnual(ArrayList<Persona> personas) {
         double costeTotal = 0;
-
         for (Persona persona : personas) {
-            if (persona instanceof Trabajador) {
-                costeTotal = ((Trabajador) persona).getSalario() * 14;
-                double plus = costeTotal * 0.05;
-                costeTotal += plus;
-                System.out.println(persona.getNombre() + "Coste anual de: " + costeTotal + " euros.");
-            }
-
             if (persona instanceof Paciente) {
                 HashMap<Integer, Ingreso> registro = ((Paciente) persona).getRegistro();
                 for (int i = 0; i < registro.size(); i++) {
                     Ingreso ingreso = registro.get(i);
                     costeTotal = calcularPeriodo(ingreso);
                     costeTotal *= 700;
-
-                    if (ingreso.getArea().getEspecialidad().equalsIgnoreCase("traumatologia")) {
+                    if (ingreso.getArea().getEspecialidad().equalsIgnoreCase("Traumatología")) {
                         double plus = costeTotal * 0.02;
                         costeTotal += plus;
                     }
                 }
-                System.out.println(persona.getNombre() + "Coste anual de: " + costeTotal + " euros.");
+                System.out.println(persona.getNombre() + " :" + "Coste anual de :" + costeTotal + " euros.");
             }
         }
+        return costeTotal;
     }
 
     @Override
@@ -80,4 +77,5 @@ public class Paciente extends Persona {
                 "Patología: " + patologia + "\n" +
                 "Registro: " + registro;
     }
+
 }

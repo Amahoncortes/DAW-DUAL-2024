@@ -2,6 +2,7 @@ package ExceptionHandling.Hospital;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 //la fecha de incorporación, el área sanitaria en la
 //que trabaja, su cargo en el hospital y su salario
@@ -56,6 +57,20 @@ public class Trabajador extends Persona {
 
     public void setSalario(double salario) {
         this.salario = salario;
+    }
+
+    @Override
+    public double calcularCosteAnual(ArrayList<Persona> personas) {
+        double costeTotal = 0;
+        for (Persona persona : personas) {
+            if (persona instanceof Trabajador) {
+                costeTotal = ((Trabajador) persona).getSalario() * 14;
+                double plus = costeTotal * 0.05;
+                costeTotal += plus;
+                System.out.println(persona.getNombre() + " :" + " Coste anual de: " + costeTotal + " euros.");
+            }
+        }
+        return costeTotal;
     }
 
     @Override

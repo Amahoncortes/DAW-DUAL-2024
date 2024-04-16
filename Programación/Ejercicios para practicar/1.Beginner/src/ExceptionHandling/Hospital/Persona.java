@@ -75,7 +75,7 @@ public abstract class Persona {
     }
 
 
-    public abstract double costeAnual();
+    public abstract double calcularCosteAnual(ArrayList<Persona> personas);
 
     public long calcularPeriodo(Ingreso ingreso) {
         LocalDate fechaDeEntrada = ingreso.getFechaIngreso();
