@@ -1,6 +1,8 @@
 package ExceptionHandling.Hospital;
 
 import java.time.LocalDate;
+import java.time.Period;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -12,18 +14,19 @@ import java.util.HashMap;
 public class Paciente extends Persona {
     private LocalDate fechaIngreso;
     private String patologia;
-    private HashMap<Integer, Ingreso> registro;
+    private HashMap<Integer, Ingreso> ingreso;
 
     public Paciente() {
         this.fechaIngreso = LocalDate.now();
         this.patologia = "gripe";
-        this.registro = new HashMap<>();
+        this.ingreso = new HashMap<>();
     }
 
     public Paciente(String dni, String nombre, int edad, String direccion, LocalDate fechaIngreso, String patologia) {
         super(dni, nombre, edad, direccion);
         this.fechaIngreso = fechaIngreso;
         this.patologia = patologia;
+        this.ingreso = new HashMap<>();
     }
 
     public LocalDate getFechaIngreso() {
@@ -42,26 +45,30 @@ public class Paciente extends Persona {
         this.patologia = patologia;
     }
 
-    public void setRegistro(HashMap<Integer, Ingreso> registro) {
-        this.registro = registro;
+    public void setIngreso(Integer id, Ingreso ingreso){
+        this.ingreso.put(id,ingreso);
     }
 
-    public HashMap<Integer, Ingreso> getRegistro() {
-        return registro;
+    public HashMap<Integer, Ingreso> getIngreso() {
+        return ingreso;
     }
 
+    /**
+     * Calcula el coste anual para una lista de pacientes.
+     *
+     * @param  personas  La lista de pacientes cuyo coste hay que calcular.
+     * @return El coste anual total para todos los pacientes.
+     */
     public double calcularCosteAnual(ArrayList<Persona> personas) {
         double costeTotal = 0;
         for (Persona persona : personas) {
-            if (persona instanceof Paciente) {
-                HashMap<Integer, Ingreso> registro = ((Paciente) persona).getRegistro();
-                for (int i = 0; i < registro.size(); i++) {
-                    Ingreso ingreso = registro.get(i);
-                    costeTotal = calcularPeriodo(ingreso);
-                    costeTotal *= 700;
-                    if (ingreso.getArea().getEspecialidad().equalsIgnoreCase("Traumatología")) {
-                        double plus = costeTotal * 0.02;
-                        costeTotal += plus;
+            if (persona instanceof Paciente paciente) {
+                HashMap<Integer, Ingreso> registro = paciente.getIngreso();
+                for (Ingreso ingreso : registro.values()) {
+                    double coste = calcularPeriodo(ingreso);
+                    costeTotal += coste * 700;
+                    if (ingreso.getArea().getNombre().equalsIgnoreCase("Traumatología")) {
+                        costeTotal += costeTotal * 0.02;
                     }
                 }
                 System.out.println(persona.getNombre() + " :" + "Coste anual de :" + costeTotal + " euros.");
@@ -75,7 +82,13 @@ public class Paciente extends Persona {
         return super.toString() + "\n" +
                 "Fecha de ingreso: " + fechaIngreso + "\n" +
                 "Patología: " + patologia + "\n" +
-                "Registro: " + registro;
+                "Registro: " + ingreso;
     }
 
+
+    public static long calcularPeriodo(Ingreso ingreso) {
+        LocalDate fechaDeEntrada = ingreso.getFechaIngreso();
+        LocalDate fechaDeSalida = ingreso.getFechaSalida();
+        return ChronoUnit.DAYS.between(fechaDeEntrada, fechaDeSalida);
+    }
 }

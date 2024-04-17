@@ -76,11 +76,4 @@ public abstract class Persona {
 
 
     public abstract double calcularCosteAnual(ArrayList<Persona> personas);
-
-    public long calcularPeriodo(Ingreso ingreso) {
-        LocalDate fechaDeEntrada = ingreso.getFechaIngreso();
-        LocalDate fechaDeSalida = ingreso.getFechaSalida();
-        Period p = Period.between(fechaDeEntrada, fechaDeSalida);
-        return ChronoUnit.DAYS.between(fechaDeEntrada, fechaDeSalida);
-    }
 }

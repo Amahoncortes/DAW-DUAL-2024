@@ -8,23 +8,23 @@ import java.util.ArrayList;
 //que trabaja, su cargo en el hospital y su salario
 public class Trabajador extends Persona {
     private LocalDate fechaIncorporacion;
-    private Area areaSanitaria;
-    private String cargoHospital;
-    private double salario;
+    private Area area;
+    private String cargo;
+    private double sueldo;
 
     public Trabajador() {
         this.fechaIncorporacion = LocalDate.now();
-        this.areaSanitaria = new Area();
-        this.cargoHospital = "celador";
-        this.salario = 1500;
+        this.area = new Area();
+        this.cargo = "celador";
+        this.sueldo = 1500;
     }
 
-    public Trabajador(String dni, String nombre, int edad, String direccion, LocalDate fechaIncorporacion, Area areaSanitaria, String cargoHospital, double salario) {
+    public Trabajador(String dni, String nombre, int edad, String direccion, LocalDate fechaIncorporacion, Area area, String cargo, double sueldo) {
         super(dni, nombre, edad, direccion);
         this.fechaIncorporacion = fechaIncorporacion;
-        this.areaSanitaria = areaSanitaria;
-        this.cargoHospital = cargoHospital;
-        this.salario = salario;
+        this.area = area;
+        this.cargo = cargo;
+        this.sueldo = sueldo;
     }
 
     public LocalDate getFechaIncorporacion() {
@@ -35,39 +35,46 @@ public class Trabajador extends Persona {
         this.fechaIncorporacion = fechaIncorporacion;
     }
 
-    public Area getAreaSanitaria() {
-        return areaSanitaria;
+    public Area getArea() {
+        return area;
     }
 
-    public void setAreaSanitaria(Area areaSanitaria) {
-        this.areaSanitaria = areaSanitaria;
+    public void setArea(Area area) {
+        this.area = area;
     }
 
-    public String getCargoHospital() {
-        return cargoHospital;
+    public String getCargo() {
+        return cargo;
     }
 
-    public void setCargoHospital(String cargoHospital) {
-        this.cargoHospital = cargoHospital;
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
     }
 
-    public double getSalario() {
-        return salario;
+    public double getSueldo() {
+        return sueldo;
     }
 
-    public void setSalario(double salario) {
-        this.salario = salario;
+    public void setSueldo(double sueldo) {
+        this.sueldo = sueldo;
     }
 
+
+    /**
+     * Calcula el coste anual para una lista de empleados
+     * @param  personas  La lista de empleados cuyo coste hay que calcular.
+     * Se supone que la lista contiene solo objetos de tipo Trabajador
+     * @return El coste total anual para todos los empleados.
+     */
     @Override
     public double calcularCosteAnual(ArrayList<Persona> personas) {
         double costeTotal = 0;
         for (Persona persona : personas) {
-            if (persona instanceof Trabajador) {
-                costeTotal = ((Trabajador) persona).getSalario() * 14;
-                double plus = costeTotal * 0.05;
-                costeTotal += plus;
-                System.out.println(persona.getNombre() + " :" + " Coste anual de: " + costeTotal + " euros.");
+            if (persona instanceof Trabajador trabajador) {
+                double costeParcial = trabajador.getSueldo() * 14;
+                double plus = costeParcial * 0.05;
+                costeTotal += costeParcial + plus;
+                System.out.println(persona.getNombre() + ":" + " Coste anual de: " + costeTotal + " euros.");
             }
         }
         return costeTotal;
@@ -79,8 +86,8 @@ public class Trabajador extends Persona {
         String fechaFormateada = dtf.format(fechaIncorporacion);
         return super.toString() + "\n" +
                 "Fecha de incorporación: " + fechaFormateada + "\n" +
-                "Area sanitaria: " + areaSanitaria + "\n" +
-                "Cargo que ocupa: " + cargoHospital + "\n" +
-                "Salario: " + salario;
+                "Area sanitaria: " + area + "\n" +
+                "Cargo que ocupa: " + cargo + "\n" +
+                "Salario: " + sueldo;
     }
 }

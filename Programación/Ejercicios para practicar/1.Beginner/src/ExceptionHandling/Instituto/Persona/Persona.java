@@ -52,8 +52,6 @@ public abstract class Persona {
         this.direccion = direccion;
     }
 
-    abstract double calcularCosteAnual();
-
     @Override
     public String toString() {
         return "------------------------------" + "\n"

@@ -4,16 +4,16 @@ package ExceptionHandling.Hospital;
 //médica.
 public class Area {
     private int id;
-    private String especialidad;
+    private String nombre;
 
     public Area() {
         this.id = 5;
-        this.especialidad = "Pediatría";
+        this.nombre = "Pediatría";
     }
 
-    public Area(int id, String especialidad) {
+    public Area(int id, String nombre) {
         this.id = id;
-        this.especialidad = especialidad;
+        this.nombre = nombre;
     }
 
     public int getId() {
@@ -24,18 +24,17 @@ public class Area {
         this.id = id;
     }
 
-    public String getEspecialidad() {
-        return especialidad;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setEspecialidad(String especialidad) {
-        this.especialidad = especialidad;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     @Override
     public String toString() {
-        return this.getClass().getSimpleName() + "\n" +
-                "ID: " + id + "\n" +
-                "Especialidad: " + especialidad;
+        return "\n" + "ID: " + id + "\n" +
+                "Especialidad: " + nombre;
     }
 }
