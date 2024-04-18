@@ -20,7 +20,6 @@ public class Operaciones {
      */
     public static Trabajador crearTrabajador(ArrayList<Area> areas) {
         Scanner scanner = new Scanner(System.in);
-        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate fechaActual = LocalDate.now();
         Area areaSeleccionada = null;
         boolean datosValidos;
@@ -46,7 +45,7 @@ public class Operaciones {
                 double salario = scanner.nextDouble();
                 scanner.nextLine();
 
-                System.out.println("Áreas disponibles: " + areas.toString());
+                System.out.println(STR."Áreas disponibles: \{areas.toString()}");
                 System.out.println("Introducir id de area");
                 int idArea = scanner.nextInt();
                 scanner.nextLine();

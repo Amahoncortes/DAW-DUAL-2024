@@ -14,7 +14,6 @@ public class Main {
         int opcion;
         ArrayList<Persona> personas = new ArrayList<>();
         ArrayList<Area> especialidad = new ArrayList<>();
-        HashMap<String, Ingreso> registro = new HashMap<>();
 
         inicializarAreas(especialidad);
 
@@ -115,10 +114,10 @@ public class Main {
         int opcionConsultas = sc.nextInt();
         switch (opcionConsultas) {
             case 1:
-                Operaciones.consultarTrabajadores(personas);
+                consultarTrabajadores(personas);
                 break;
             case 2:
-                Operaciones.consultarPacientes(personas);
+                consultarPacientes(personas);
                 break;
         }
     }
