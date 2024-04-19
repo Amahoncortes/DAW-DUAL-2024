@@ -139,14 +139,13 @@ public class Operaciones {
      * @throws IllegalArgumentException Si la lista de veterinarios devuelve null
      */
     public static void calcularSalarioMedio(List<Veterinario> veterinarios) {
-        ;
         if (veterinarios == null) {
             throw new IllegalArgumentException("El ArrayList de productos no puede ser nulo");
         }
         double salarioTotal = 0;
         int contador = 0;
         for (Veterinario veterinario : veterinarios) {
-            if (veterinario.getEspecialidad() != null && veterinario.getEspecialidad().toString().equalsIgnoreCase("Traumatología")) {
+            if (veterinario.getEspecialidad() != null && veterinario.getEspecialidad().getNombre().equalsIgnoreCase("Traumatología")) {
                 salarioTotal += veterinario.getSueldoMensual() * 14;
                 contador++;
             }
@@ -161,7 +160,7 @@ public class Operaciones {
     }
 
     /**
-     * Lista las mascotas con una edad mayor que 6 meses que han sido registradas en el registro de cada veterinario.
+     * Lista las mascotas con una edad mayor que 6 años que han sido registradas en el registro de cada veterinario.
      *
      * @param  veterinarios  La lista de veterinarios.
      */
