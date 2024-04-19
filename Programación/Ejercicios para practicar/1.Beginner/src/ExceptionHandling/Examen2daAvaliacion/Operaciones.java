@@ -208,5 +208,4 @@ public class Operaciones {
     public static boolean caducidadMenor5(LocalDate fechaExpiracion, LocalDate fechaActual) {
         return ChronoUnit.DAYS.between(fechaExpiracion, fechaActual) < 5;
     }
-
 }
