@@ -4,13 +4,14 @@ import ExceptionHandling.Examen2daAvaliacion.Producto.Bazar;
 import ExceptionHandling.Examen2daAvaliacion.Producto.Comestible;
 import ExceptionHandling.Examen2daAvaliacion.Producto.Producto;
 import ExceptionHandling.Examen2daAvaliacion.Producto.ZonaInvalidaException;
-import ExceptionHandling.Hospital.Ingreso;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
+
+import static java.lang.StringTemplate.STR;
 
 public class Operaciones {
 
@@ -83,7 +84,7 @@ public class Operaciones {
             return new Comercial(nombre, apellidos, edad, zona, crearRegistroComercial());
 
         } catch (InputMismatchException | ZonaInvalidaException | EdadNegativaException e) {
-            System.out.println("Error. Vuelva a introducir los datos");
+            System.out.println(e.getMessage());
             return altaComercial();
         }
     }
@@ -102,7 +103,7 @@ public class Operaciones {
         int i = 0;
         boolean continuar = true;
         while (continuar) {
-            System.out.println(STR."Producto #\{i + 1}");
+            System.out.println(STR. "Producto #\{ i + 1 }" );
             Producto producto = altaProducto();
             registroComercial.put(i, producto);
             System.out.println("Desea introducir otro producto? (s/n)");
@@ -119,6 +120,14 @@ public class Operaciones {
      * @param productos La lista de productos de la cual eliminamos los productos de limpieza.
      */
     public static void eliminarLimpieza(ArrayList<Producto> productos) {
+//        for (Producto producto : productos) {
+//            if (producto instanceof Bazar && ((Bazar) producto).getTipo().equalsIgnoreCase("Limpieza")) {
+//                System.out.println("El producto " + producto.getNombre() + " ha sido eliminado");
+//                //productos.remove(producto);
+//                productos.remove(producto);
+//            }
+//        }
+        System.out.println("Se ha eliminado el producto de Limpieza");
         productos.removeIf(producto -> producto instanceof Bazar b && b.getTipo().equals("Limpieza"));
     }
 
@@ -142,7 +151,8 @@ public class Operaciones {
                     contProdBazar++;
                 }
             }
-            System.out.println(STR."El comercial \{comercial.getNombre()} \{comercial.getApellidos()} está especializado en \{contProdComestible >= contProdBazar ? "Comestibles" : "Bazar"}");
+            //System.out.println(STR."El comercial \{comercial.getNombre()} \{comercial.getApellidos()} está especializado en \{contProdComestible >= contProdBazar ? "Comestibles" : "Bazar"}");
+            System.out.println("El comercial " + comercial.getNombre() + " " + comercial.getApellidos() + "está especializado en" + (contProdComestible >= contProdBazar ? "Comestibles" : "Bazar"));
         }
     }
 
@@ -165,7 +175,7 @@ public class Operaciones {
             }
             return fechaFormateada;
         } catch (CaducidadAnteriorException | DateTimeParseException e) {
-            System.out.println(STR."\{e.getMessage()} Vuelva a introducir la fecha de expiración");
+            System.out.println(STR. "\{ e.getMessage() } Vuelva a introducir la fecha de expiración" );
             return validarFechaCaducidad(scanner.nextLine());
         }
     }
@@ -180,7 +190,7 @@ public class Operaciones {
         if (productos == null) {
             throw new IllegalArgumentException("El ArrayList de productos no puede ser nulo");
         }
-
+        double costeMedio = 0.0;
         double costeTotal = 0.0;
         int contador = 0;
         for (Producto p : productos) {
@@ -192,15 +202,21 @@ public class Operaciones {
                 System.out.println("No se encontraron productos comestibles");
                 return;
             }
-            double costeMedio = costeTotal / contador;
-            System.out.println(STR."Coste medio de \{p.getNombre()} : \{costeMedio} euros.");
+            costeMedio = costeTotal / contador;
         }
+        System.out.println(STR. "Coste medio de \{ "Comestibles" } : \{ costeMedio } euros." );
     }
 
-    public static void mostrarFechaCaducidad(ArrayList<Producto> productos) {
-        for (Producto p : productos) {
-            if (p instanceof Comestible && caducidadMenor5(((Comestible) p).getFechaCaducidad(), LocalDate.now())) {
-                System.out.println(STR."Productos con fecha de caducidad inferior a 5 días: \{p}");
+    public static void mostrarFechaCaducidad(ArrayList<Comercial> comerciales) {
+
+        for (Comercial comercial : comerciales) {
+            HashMap<Integer, Producto> stock = comercial.getStock();
+
+            Collection<Producto> productos = stock.values();
+            for (Producto p : productos) {
+                if (p instanceof Comestible && caducidadMenor5(((Comestible) p).getFechaCaducidad(), LocalDate.now())) {
+                    System.out.println(STR. "Productos con fecha de caducidad inferior a 5 días: \{ p }" );
+                }
             }
         }
     }

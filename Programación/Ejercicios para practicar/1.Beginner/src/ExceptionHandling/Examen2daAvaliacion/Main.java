@@ -32,7 +32,7 @@ public class Main {
                     calcularCosteMedio(productos);
                     break;
                 case 5:
-                     mostrarFechaCaducidad(productos);
+                     mostrarFechaCaducidad(comerciales);
                     break;
             }
         } while (opcion != 6);
