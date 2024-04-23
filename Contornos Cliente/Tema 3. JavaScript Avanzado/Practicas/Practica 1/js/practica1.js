@@ -1,65 +1,52 @@
 document.addEventListener("DOMContentLoaded", function () {
     console.log("La pagina ha terminado de cargarse");
 
-    //Recoger todos los cuadros de texto y alformulario
-    const formulario = document.forms["formulario"];
-    const querySelector = document.getElementById("modelo");
-    const marca = document.getElementById("marca");
-    const precio = document.getElementById("precio");
-    const km = document.getElementById("km");
+    //Recoger todos los cuadros de texto y el formulario
 
-    //Botones
-    const botonCrearVehiculo = formulario.querySelector('input[type="submit"]');
-    const botonMostrarVehiculo = document.getElementById("mostrar");
+    const formulario = document.getElementById("crearVehiculos"); //formulario
+    const modelo = document.getElementById("modelo"); //modelo
+    const marca = document.getElementById("marca"); //marca
+    const precio = document.getElementById("precio"); //precio
+    const km = document.getElementById("km"); //km
+    const numero = document.getElementById("number"); //numero
+    const btnCrearVehiculo = document.querySelector('input[type="button"][value="Crear vehiculo"]');
+    const elementosFormulario = document.querySelectorAll('input[type="text"], input[type="number"]');
+    console.log(elementosFormulario);
+    const btnMostrarVehiculo = document.getElementById('mostrar');
+    const vehiculos = [];
+    const divVehiculos = document.getElementById("divVehiculos");
 
-    //Array de vehiculos
-    let arrayDeVehiculos = [];
 
-    /*Añadir un botón Mostrar que visualice todos los coches aparcados en el
-    aparcamiento.
-    Para ello debes crear un método imprimirVehiculo que muestre los datos
-    utilizando los métodos de creación de nodos de la estructura DOM.
-    */
-
-    function crearVehiculo(event) {
-        //Evitamos el envío del formulario
+    btnCrearVehiculo.addEventListener("click", function (event) {
         event.preventDefault();
-        //Se almacenan los vehiculos en un arraylist de vehiculos
-        let nuevoVehiculo = new Vehiculo(modelo.value, marca.value, precio.value, km.value);
-        arrayDeVehiculos.push(nuevoVehiculo);
+        const vehiculo = {
+            modelo: modelo.value,
+            marca: marca.value,
+            precio: precio.value,
+            km: km.value
+        };
+        vehiculos.push(vehiculo);
+        limpiar();
+    });
 
-        //Cuento el total de vehiculos
-        console.log("Vehiculo creado. Total de vehiculos:", arrayDeVehiculos.length);
-
-        //Reseteamos los valores del formulario
-        formulario.reset();
-    }
-
-    function imprimirVehiculo() {
-        console.log("Ejecutando imprimirVehiculo. Total de vehiculos:", arrayDeVehiculos.length);
-        //Creamos referencia a divVehiculos 
-        const divVehiculos = document.getElementById("divVehiculos");
-
-
-        for (let i = 0; i < arrayDeVehiculos.length; i++) {
-            if (arrayDeVehiculos[i] instanceof Vehiculo) {
-                const contenedor = document.createElement("div");
-                const nodoTexto = document.createTextNode(arrayDeVehiculos[i].mostrarDatos());
-
-                //Appends
-                contenedor.appendChild(nodoTexto);
-                divVehiculos.appendChild(contenedor);
-
-                //Muestro la informacion completa de los coches 
-                console.log(arrayDeVehiculos[i].mostrarDatos());
-            } else {
-                console.error("Elemento en el array no es instancia válida de Vehiculo");
-            }
+    btnMostrarVehiculo.addEventListener("click", function () {
+        console.log("Mostrar vehiculos");
+        for (let index = 0; index < vehiculos.length; index++) {
+            const vehiculo = vehiculos[index];
+            const parrafo = document.createElement("p");
+            const texto = document.createTextNode("Vehiculo: " + vehiculo.modelo + "\n" +
+                "Marca: " + vehiculo.marca + "\n" +
+                "Precio: " + vehiculo.precio + "\n" +
+                "Km: " + vehiculo.km);
+            parrafo.appendChild(texto);
+            divVehiculos.appendChild(parrafo);
         }
-    }
+    })
 
-    //Cuando pulsamos Crear Vehiculo, añademe un vehiculo al array
-    botonCrearVehiculo.addEventListener("click", crearVehiculo);
-    //Cuando pulsemos mostrar, muestra todos los coches aparcados.
-    botonMostrarVehiculo.addEventListener("click", imprimirVehiculo);
+    function limpiar() {
+        elementosFormulario.forEach(element => {
+            element.value = "";
+        });
+        elementosFormulario[0].focus();
+    }
 });
