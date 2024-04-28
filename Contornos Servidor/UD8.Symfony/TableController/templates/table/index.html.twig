@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tabla Generada{% endblock %}
+
+{% block body %}
+    <style>
+        .texto-tabla {
+            margin: 1em auto;
+            max-width: 800px;
+            width: 95%;
+            font: 18px/1.5 sans-serif;
+        }
+        .codigo-tabla {
+            background: #F5F5F5;
+            padding: 10px;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        .codigo-tabla th, .codigo-tabla td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        .contador-filas {
+            width: 50px;
+        }
+    </style>
+
+    <div class="texto-tabla">
+        <h1>Tabla Generada</h1>
+        <p>Número de filas: {{ table|length }}</p>
+        <p>Número de columnas: {{ table[0]|length }}</p>
+        <div class="codigo-tabla">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="contador-filas">Fila</th>
+                        {% for i in 1..table[0]|length %}
+                            <th>Columna {{ i }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for index, fila in table %}
+                        <tr>
+                            <td class="contador-filas">Fila {{ index + 1 }}</td>
+                            {% for valor in fila %}
+                                <td>{{ valor }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
