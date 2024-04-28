@@ -1,49 +1,67 @@
+{# Hereda de base.html.twig #}
 {% extends 'base.html.twig' %}
 
+{# Establece el título de la página #}
 {% block title %}Tabla Generada{% endblock %}
 
+{# Comienza un bloque body #}
 {% block body %}
+    {# Estilos de la tabla #}
     <style>
+        {# Estilos para tabla y texto #}
         .texto-tabla {
-            margin: 1em auto;
-            max-width: 800px;
-            width: 95%;
-            font: 18px/1.5 sans-serif;
+            margin: 1em auto;  {# Margin and auto centering #}
+            max-width: 800px;  {# Ancho y centrado #}
+            width: 95%;         {# Ancho y centrado #}
+            font: 18px/1.5 sans-serif;  {# Font properties #}
         }
         .codigo-tabla {
-            background: #F5F5F5;
-            padding: 10px;
-            border-collapse: collapse;
-            width: 100%;
+            background: #F5F5F5;  {# Background color #}
+            padding: 10px;  {# Padding #}
+            border-collapse: collapse;  {# Borde de la tabla #}
+            width: 100%;  {# Ancho #}
         }
         .codigo-tabla th, .codigo-tabla td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: center;
+            border: 1px solid #ddd;  {# Estilo de bordeado #}
+            padding: 8px;  {# Padding #}
+            text-align: center;  {# Alineado del texto #}
         }
         .contador-filas {
-            width: 50px;
+            width: 50px;  {# Ancho #}
         }
     </style>
 
+    {# Contenedor para el texto y la tabla #}
     <div class="texto-tabla">
+        {# Encabezado #}
         <h1>Tabla Generada</h1>
+
+        {# Número de filas #}
         <p>Número de filas: {{ table|length }}</p>
+
+        {# Número de columnas #}
         <p>Número de columnas: {{ table[0]|length }}</p>
+
+        {# Contenedor de la tabla #}
         <div class="codigo-tabla">
             <table>
+                {# Encabezado de la tabla#}
                 <thead>
                     <tr>
                         <th class="contador-filas">Fila</th>
+                        {# Genera columnas basado en el número de columnas de la tabla #}
                         {% for i in 1..table[0]|length %}
                             <th>Columna {{ i }}</th>
                         {% endfor %}
                     </tr>
                 </thead>
+                {# cuerpo de la tabla #}
                 <tbody>
+                    {# Genera filas basadas en las filas de la tabla #}
                     {% for index, fila in table %}
                         <tr>
                             <td class="contador-filas">Fila {{ index + 1 }}</td>
+                            {# Genera celdas basado en la fila#}
                             {% for valor in fila %}
                                 <td>{{ valor }}</td>
                             {% endfor %}
