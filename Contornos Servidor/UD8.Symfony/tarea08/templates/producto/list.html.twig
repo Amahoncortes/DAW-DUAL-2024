@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Product List{% endblock %}
+
+{% block body %}
+  {% include "common/_messages.html.twig" %}
+
+  <div class="product-list">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Fecha de creacion</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for producto in productos %}
+          <tr>
+            <td>{{ producto.id }}</td>
+            <td>{{ producto.nombre }}</td>
+            <td>{{ producto.precio }}</td>
+            <td>{{ producto.fechaCreacion|date('Y-m-d H:i') }}</td>
+          </tr>
+        {% else %}
+          <tr>
+            <td>No se encontraron productos.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}
