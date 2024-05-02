@@ -1,6 +1,8 @@
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -23,7 +25,7 @@ public class Main {
             System.out.println("El archivo ya existe");
         }
 
-        if(!archivoProductos.exists()) {
+        if (!archivoProductos.exists()) {
             try {
                 archivoProductos.createNewFile();
                 System.out.println("Archivo creado exitosamente");
@@ -82,7 +84,7 @@ public class Main {
         nombre de producto y precio.
         **/
 
-    public static void escribirEnFichero(String [] nombres, int [] precios, File archivo) {
+    public static void escribirEnFichero(String[] nombres, int[] precios, File archivo) {
         //Escribiendo en el archivo
         try (FileWriter fw = new FileWriter(archivo)) {
             // Creamos un StringBuilder para almacenar el texto formateado.
@@ -90,17 +92,17 @@ public class Main {
             // Recorremos el array de nombres. Cada elemento se agrega al StringBuilder con un salto de línea.
             for (int i = 0; i < nombres.length; i++) {
                 // Agregamos el indice, el nombre, el precio, y un salto de linea al StringBuilder.
-                sb.append(i+1).append(".").append(nombres[i]).append(".").append(precios[i]).append("\n");
+                sb.append(i + 1).append(".").append(nombres[i]).append(".").append(precios[i]).append("\n");
                 //Imprimimos el indice, el nombre y el precio por pantalla.
-                System.out.println(i+1 + "." + nombres[i] + ". " + precios[i] + " euros.");
+                System.out.println(i + 1 + "." + nombres[i] + ". " + precios[i] + " euros.");
             }
             //Escribimos el StringBuilder en el archivo.
             fw.write(sb.toString());
-        } catch(IOException e) {
+        } catch (IOException e) {
             // Manejamos las excepciones IO
             System.out.println("Error al escribir en el archivo");
             e.printStackTrace();
-        } catch(Exception e) {
+        } catch (Exception e) {
             // Manejamos las excepciones generales
             System.out.println("Ocurrió un error inesperado");
             e.printStackTrace();
@@ -114,6 +116,42 @@ public class Main {
         pantalla (nombre y precio)
         */
 
+    public static void solicitarProducto(String[] nombres, int[] precios, File archivo) {
+        Scanner sc = new Scanner(System.in);
+
+        //Escribiendo en el archivo
+        try (FileWriter fw = new FileWriter(archivo)) {
+            // Creamos un StringBuilder para almacenar el texto formateado.
+            StringBuilder sb = new StringBuilder();
+            // Recorremos el array de nombres. Cada elemento se agrega al StringBuilder con un salto de línea.
+            for (int i = 0; i < nombres.length; i++) {
+                // Agregamos el indice, el nombre, el precio, y un salto de linea al StringBuilder.
+                sb.append(i + 1).append(".").append(nombres[i]).append(".").append(precios[i]).append("\n");
+                //Imprimimos el indice, el nombre y el precio por pantalla.
+                System.out.println(i + 1 + "." + nombres[i] + ". " + precios[i] + " euros.");
+            }
+            //Escribimos el StringBuilder en el archivo.
+            fw.write(sb.toString());
+        } catch (IOException e) {
+            // Manejamos las excepciones IO
+            System.out.println("Error al escribir en el archivo");
+            e.printStackTrace();
+        } catch (Exception e) {
+            // Manejamos las excepciones generales
+            System.out.println("Ocurrió un error inesperado");
+            e.printStackTrace();
+        }
+
+        System.out.println("Introduce el nombre del producto que quieres borrar");
+        String nombre = sc.nextLine();
+        if (Arrays.asList(nombres).contains(nombre)) {
+            int indice = Arrays.asList(nombres).indexOf(nombre);
+            System.out.println("Nombre: " + nombres[indice] + " Precio: " + precios[indice]);
+            nombres[indice] = "";
+            precios[indice] = 0;
+            System.out.println("Se ha borrado con exito");
+        }
+    }
 
 
         /*4. Implementar un programa que gestione registros (de 3 campos) almacenados en un fichero.
@@ -125,10 +163,10 @@ public class Main {
 
 
 
-        /*5. Implementa los ejercicios 2, 3 y 4 empleando la persistencia de objetos en ficheros.
-         *
-         *
-         */
+    /*5. Implementa los ejercicios 2, 3 y 4 empleando la persistencia de objetos en ficheros.
+     *
+     *
+     */
 
 
 
