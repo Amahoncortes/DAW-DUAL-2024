@@ -3,12 +3,14 @@
 
 class Pelicula {
    constructor(titulo, director, duracion) {
+       if (!titulo || !director || !duracion) {
+           throw new Error('Argumentos inválidos: la película debe tener un título, un director y una duración.');
+       }
        this.titulo = titulo;
        this.director = director;
        this.duracion = duracion;
    }
 };
-
 //console.log(pelicula.titulo);
 
 //let peliculaJSON = JSON.stringify(pelicula);

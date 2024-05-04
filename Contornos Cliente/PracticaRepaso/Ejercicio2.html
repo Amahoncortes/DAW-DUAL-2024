@@ -3,12 +3,12 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Lista de la compra</title>
+    <title>Groceries list</title>
     <style>
         input {
             margin: 10px;
         }
-        
+
         li {
             font-size: 23px;
             list-style: none;
@@ -17,23 +17,29 @@
 
 </head>
 
-<h1>Lista de la compra</h1>
-<form name="elFormulario" action="">
-    <input type="text" name="entrada" id="entrada" placeholder="Introduce un nuevo artículo" />
-    <input type="button" name="botonAnadir" id="botonAnadir" value="Añadir" />
-    <input type="button" name="botonBorrar" id="botonBorrar" value="Borrar" />
-</form>
-<div class="listaComprados">
-    <h1>Lista Comprados</h1>
-    <ul id="listaC">
-    </ul>
-</div>
+<body>
+    <h1>Shopping list</h1>
+    <form name="elFormulario" action="">
+        <input type="text" name="entrada" id="entrada" placeholder="Introduce un nuevo artículo" />
+        <input type="text" name="precio" id="precio" placeholder="Introduce el precio" />
 
-<div class="listaEliminados">
-    <h1>Lista Eliminados</h1>
-    <ul id="listaE">
-    </ul>
-</div>
+        <input type="button" name="botonAnadir" id="botonAnadir" value="Add" />
+        <input type="button" name="botonBorrar" id="botonBorrar" value="Delete" />
+    </form>
+    <div class="listaComprados">
+        <h1>Bought list</h1>
+        <ul id="listaC">
+        </ul>
+    </div>
 
+    <div class="listaEliminados">
+        <h1>Lista Eliminados</h1>
+        <ul id="listaE">
+        </ul>
+    </div>
+
+    <script src="js/Clases/Articulo.js"></script>
+    <script src="js/ejercicio2.js"></script>
+</body>
 
 </html>
