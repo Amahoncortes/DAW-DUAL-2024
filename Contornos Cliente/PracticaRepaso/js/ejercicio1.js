@@ -51,7 +51,7 @@ window.onload = function () {
         const duracion = document.getElementById('addDuracion');
 
         // Comprueba si todos los elementos input existen
-        if (!titulo || !director || !duracion) {
+        if (titulo.value == '' || director.value == '' || duracion.value == '') {
             // Si cualquiera de ellos falta, enseña un mensaje de error. 
             console.error('Faltan elementos en el formulario');
             return; // Sale de la función para prevenir ejecución del resto del código. 
@@ -70,26 +70,53 @@ window.onload = function () {
         mostrarPelicula(pelicula);
     }
 
+    /**
+     * Función para borrar una película del localStorage y de la lista de películas.
+     * @param {Event} event - El objeto evento que activa el borrado.
+     */
     function borrarPelicula(event) {
+        // Previene el envío del formulario.
         event.preventDefault();
+
+        // Obtiene el elemento de la película a borrar.
         const peliculaBorrar = document.getElementById('removepelicula');
+
+        // Obtiene la lista de películas.
         const peliculasList = document.getElementById('peliculas');
+
+        // Obtiene una lista de todos los párrafos en la lista de películas.
         const parrafos = peliculasList.getElementsByTagName('p');
 
-        if (!peliculaBorrar) {
+        let contadorPeliculasBorradas = 0;
+
+        // Comprueba si el elemento de la película a borrar no existe.
+        if (peliculaBorrar.value == '') {
+            // Si no existe, enseña un error y sale de la función.
             console.error('Faltan elementos en el formulario');
             return;
         }
 
+        // Recorre todos los párrafos en la lista de películas.
         for (let index = 0; index < parrafos.length; index++) {
+            // Comprueba si el texto de un párrafo incluye el título de la película a borrar.
             if (parrafos[index].textContent.includes(peliculaBorrar.value)) {
+                console.log(parrafos[index].textContent);
+                console.log(peliculaBorrar.value);
+                // Si es así, elimina el párrafo de la lista de películas.
                 parrafos[index].remove();
+                contadorPeliculasBorradas++;
+                index--;
             }
+        }
+        if (contadorPeliculasBorradas == 0) {
+            alert("La pelicula " + peliculaBorrar.value + " no existe");
         }
 
 
-
+        // Elimina el elemento de la película del localStorage.
         localStorage.removeItem(peliculaBorrar.value);
+
+        // Muestra el contenido actual del localStorage en la consola.
         console.log(localStorage);
     }
 
