@@ -12,7 +12,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
-#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
+#[UniqueEntity(fields: ['email'], message: 'Ya hay un usuario con este email')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -30,13 +30,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private array $roles = [];
 
     /**
-     * @var string The hashed password
+     * @var string|null The hashed password
      */
     #[ORM\Column]
     private ?string $password = null;
-
-    #[ORM\ManyToOne(inversedBy: 'Usuario')]
-    private ?Producto $ProductoUser = null;
 
     /**
      * @var Collection<int, Producto>
@@ -47,7 +44,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\OneToMany(targetEntity=Producto::class, mappedBy="user")
      */
     
-    private $productos;
+    private ArrayCollection $productos;
 
     public function __construct()
     {
@@ -95,16 +92,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @param list<string> $roles
-     */
-    public function setRoles(array $roles): static
-    {
-        $this->roles = $roles;
-
-        return $this;
-    }
-
-    /**
      * @see PasswordAuthenticatedUserInterface
      */
     public function getPassword(): string
@@ -128,48 +115,5 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
-    public function getProductoUser(): ?Producto
-    {
-        return $this->ProductoUser;
-    }
 
-
-
-
-    public function setProductoUser(?Producto $productoUser): static
-    {
-        $this->$productoUser = $productoUser;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Producto>
-     */
-    public function getProductos(): Collection
-    {
-        return $this->productos;
-    }
-
-    public function addProducto(Producto $producto): static
-    {
-        if (!$this->productos->contains($producto)) {
-            $this->productos->add($producto);
-            $producto->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeProducto(Producto $producto): static
-    {
-        if ($this->productos->removeElement($producto)) {
-            // set the owning side to null (unless already changed)
-            if ($producto->getUser() === $this) {
-                $producto->setUser(null);
-            }
-        }
-
-        return $this;
-    }
 }

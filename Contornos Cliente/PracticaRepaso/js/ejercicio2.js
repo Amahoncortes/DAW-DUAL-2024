@@ -1,139 +1,168 @@
-// Bloque de código ejecutado cuando la ventana es cargada.
-window.onload = function () {
+document.addEventListener('DOMContentLoaded', function () {
 
-    // Primero, limpiamos el LocalStorage para eliminar cualquier dato existente.
-    console.log("Vaciando LocalStorage...");
+    // Limpia el localStorage para eliminar los datos existentes.
     localStorage.clear();
-    console.log("LocalStorage vaciado.");
 
-    // A continuación, obtenemos los elementos con los que vamos a trabajar.
-    const anadirBtn = document.getElementById('botonAnadir');
+    const anhadirBtn = document.getElementById('botonAnadir');
     const borrarBtn = document.getElementById('botonBorrar');
-
-    /*
-    El siguiente bloque de código se ocupa de crear un objeto de clase Articulo y 
-    lo almacena en el localStorage cuando el usuario introduce un elemento en el campo de texto
-    y hace click en el botón añadir.
-    La clase Articulo tiene los siguientes atributos:
-    - Nombre (key)
-    - Precio
-    */
-
-    // Comprueba si los botones anadir o borrar existen y los añade si existen
-    if(anadirBtn && borrarBtn) {
-        // If both elements exist, add a click event listener to the add button
-        anadirBtn.addEventListener('click', anadirArticulo);
-        borrarBtn.addEventListener('click', borrarArticulo);
-    } else {
-        // If any of the elements are not found, log an error message
-        console.error("No existen los botones 'Anadir' o 'Borrar'");
-    }
-}
-
-
-/**
- * Función para agregar un artículo al LocalStorage.
- * @param {Event} event - El evento que activa la función.
- */
-function anadirArticulo(event) {
-    // Previene el envío del formulario.
-    event.preventDefault();
-
-    // Obtiene los elementos de entrada del formulario.
     const nombreInput = document.getElementById('entrada');
     const precioInput = document.getElementById('precio');
 
-    // Comprueba si los elementos de entrada existen.
     if (!nombreInput || !precioInput) {
-        // Si no existen, enseña un error y sale de la función.
-        console.error('Faltan elementos en el formulario');
+        console.error('Faltan elementos del formulario');
         return;
     }
 
-    // Obtiene los valores de los elementos de entrada y los trimea.
-    const nombre = nombreInput.value.trim();
-    const precio = precioInput.value.trim();
+    maskInput(nombreInput);
+    maskInput(precioInput);
 
-    // Comprueba si los valores son vacíos.
-    if (nombre === '' || precio === '') {
-        // Si son vacíos, enseña un error y sale de la función.
-        console.error('Por favor, rellena todos los campos');
-        return;
-    }
-
-    // Crea un nuevo objeto de la clase Articulo con los valores obtenidos.
-    const articulo = new Articulo(nombre, precio);
-
-    // Llama a la función rellenarLocalStorage para agregar el artículo al LocalStorage.
-    rellenarLocalStorage(articulo);
-
-    // Llama a la función mostrarLocalStorage para mostrar el contenido del LocalStorage.
-    mostrarLocalStorage(articulo);
-}
-
-/**
- * Esta función toma un objeto de la clase Articulo y lo almacena en el LocalStorage.
- * Primero, verifica si el objeto de Articulo y su nombre son válidos. Si no lo son, 
- * enseña un error y sale de la función.
- * Luego, intenta agregar el objeto al LocalStorage. Si esto es exitoso, obtiene el 
- * objeto del LocalStorage y lo devuelve en la consola. Si hay un error en el proceso, 
- * enseña un error.
- * @param {Object} articulo - El objeto Articulo que se va a almacenar en el LocalStorage.
- */
-function rellenarLocalStorage(articulo) {
-    // Comprueba si el objeto de Articulo y su nombre son válidos.
-    if (articulo && articulo.nombre) {
-        try {
-            // Intenta almacenar el objeto en el LocalStorage.
-            // El nombre del objeto en el LocalStorage es el nombre del artículo.
-            localStorage.setItem(articulo.nombre, JSON.stringify(articulo));
-            // Obtiene el objeto del LocalStorage y lo devuelve en la consola para comprobación.
-            const miArticuloObj = JSON.parse(localStorage.getItem(articulo.nombre));
-            console.log(miArticuloObj);
-        } catch (error) {
-            // Enseña un error si hay un error en el proceso de agregar el objeto al LocalStorage.
-            console.error('Error en rellenarLocalStorage:', error);
-        }
+    if (anhadirBtn && borrarBtn) {
+        anhadirBtn.addEventListener('click', anhadirArticulo);
+        // borrarBtn.addEventListener('click', borrarArticulo);
     } else {
-        // Enseña un error si el objeto de Articulo o su nombre son inválidos.
-        console.error('Articulo invalido o sin nombre');
+        console.error("Botones de añadir o borrar no encontrados.");
     }
-}
 
-/**
- * Esta función toma un objeto de la clase Articulo y muestra su contenido en la página web.
- * Primero, verifica si el objeto de Articulo y su nombre son válidos. Si no lo son, 
- * enseña un error y sale de la función.
- * Luego, intenta obtener el objeto del LocalStorage y crear un elemento <li> con el nombre y precio del artículo.
- * Finalmente, muestra el objeto en la consola para comprobación.
- * @param {Object} articulo - El objeto Articulo que se va a mostrar en la página web.
- */
-function mostrarLocalStorage(articulo) {
-    // Comprueba si el objeto de Articulo y su nombre son válidos.
-    if (articulo && articulo.nombre && articulo.precio) {
-        try {
-            // Obtiene el elemento <ul> con el id "listaC" de la página.
-            const lista = document.getElementById('listaC');
-            
-            // Si el elemento existe...
-            if (lista) {
-                // Crea un nuevo elemento <li> con el nombre y precio del artículo.
-                const li = document.createElement('li');
-                li.textContent = `Name: ${articulo.nombre} - Price: ${articulo.precio}`;
-                
-                // Agrega el elemento <li> al final de la lista.
-                lista.appendChild(li);
+    /**
+     * Esta función añade un escuchador de eventos 'input' a un elemento de entrada de texto
+     * para reemplazar cada uno de sus caracteres por un asterisco ('*').
+     * Cuando el usuario escribe en el elemento de entrada de texto,
+     * los caracteres se reemplazan por asteriscos.
+     * @param {HTMLElement} input - La entrada a enmascarar.
+     */
+    function maskInput(input) {
+
+        input.setAttribute('type', 'password');
+    }
+
+    /**
+     * Esta función se ejecuta cuando se hace clic en el botón "Añadir".
+     * Previene el envío del formulario, obtiene los valores de los campos de entrada,
+     * crea un nuevo objeto Articulo, y lo añade al LocalStorage.
+     * Luego, enseña el articulo añadido en la sección "Lista de articulos comprados".
+     * @param {Event} event - El objeto que representa el click del botón.
+     */
+    function anhadirArticulo(event) {
+        // Previene el envío del formulario.
+        event.preventDefault();
+
+        // Devuelve los valores del formulario y elimina cualquier espacio en blanco (trim).
+        const nombre = nombreInput.value.trim();
+        const precio = precioInput.value.trim();
+
+        // Comprueba si el usuario ha rellenado todos los campos.
+        if (nombre === '' || precio === '') {
+           alert('Por favor, rellena todos los campos.');
+            return;
+        }
+
+        // Crea un nuevo Articulo con los valores del formulario.
+        const articulo = new Articulo(nombre, precio);
+
+        // Añade el articulo al LocalStorage.
+        rellenarLocalStorage(articulo);
+
+        // Muestra el articulo anhadido en la sección "Lista de articulos comprados".
+        mostrarLocalStorage(articulo);
+
+        //Resetea los campos del formulario.
+        document.forms['elFormulario'].reset();
+    }
+
+    /**
+     * Almacena un objeto 'articulo' en el LocalStorage con una clave 'nombre'.
+     * Si el objeto 'articulo' o sus propiedades 'nombre' y 'precio' no son válidas,
+     * se muestra un mensaje de error.
+     * Si ocurre un error al almacenar o al parsear el objeto 'articulo', se muestra un mensaje de error.
+     * El objeto 'articulo' se muestra en la consola.
+     * @param {Object} articulo - El objeto que se almacenará en el LocalStorage.
+     * @return {void} Esta función no devuelve valores.
+     */
+    function rellenarLocalStorage(articulo) {
+        // Comprueba si el 'articulo' existe y sus atributos 'nombre' y 'precio' son válidos.
+        if (articulo && articulo.nombre && articulo.precio) {
+            try {
+                // Almacena el 'articulo' en el LocalStorage con la clave 'nombre'.
+                localStorage.setItem(articulo.nombre, JSON.stringify(articulo));
+
+                // Devuelve el 'articulo' almacenado en el LocalStorage usando la clave 'nombre' y lo parsea a un objeto.
+                const articuloObj = JSON.parse(localStorage.getItem(articulo.name));
+
+                // Muestra el 'articulo' almacenado en el LocalStorage en la consola.
+                console.log(articuloObj);
+            } catch (error) {
+                // Enseña un mensaje de error si hay algún error al almacenar el objeto 'articulo' en el LocalStorage.
+                console.error('Error al rellenar LocalStorage.', error);
             }
-        } catch (error) {
-            // Enseña un error si hay un error en el proceso de mostrar el artículo en la página.
-            console.error('Error en mostrarLocalStorage:', error);
+        } else {
+            // Muestra un error por consola si el 'articulo' no es válido o no existe.
+            console.error('Artículo no válido o no existe.');
         }
-    } else {
-        // Enseña un error si el objeto de Articulo o su nombre son inválidos.
-        console.error('Articulo inválido o sin nombre');
     }
 
-    // Muestra el objeto en la consola para comprobación.
-    console.log(localStorage);
-}
+    // Esta función tiene un parámetro 'articulo'
+    function mostrarLocalStorage(articulo) {
+        // Comprueba si el 'articulo' existe y si es un objeto con 'nombre' y 'precio' como atributos
+        if (articulo && articulo.nombre && articulo.precio) {
+            try {
+                // Obtiene el elemento con el id 'listaC' del DOM y lo guarda en la variable 'listaComprados'
+                const listaComprados = document.getElementById('listaC');
+                const listaEliminados = document.getElementById('listaE');
 
+                // Comprueba si el elemento 'listaComprados' existe.
+                if (listaComprados) {
+                    // Crea un nuevo elemento 'li'
+                    const li = document.createElement('li');
+
+                    // Establece el textContent de li como 'nombre' y 'precio' del 'articulo'.
+                    li.textContent = `Nombre: ${articulo.nombre} - Precio: ${articulo.precio}`;
+
+                    //crear un boton para cada elemento que permita borrarlo de la lista
+                    const removeButton = document.createElement('button');
+                    removeButton.textContent = 'x';
+
+                    //Crear un boton para mover los elementos arriba de la lista
+                    const upButton = document.createElement('button');
+                    upButton.textContent = 'Subir';
+
+                    //Crear un boton para mover los elementos abajo de la lista
+                    const downButton = document.createElement('button');
+                    downButton.textContent = 'Bajar';
+
+
+                    //Le añadimos la funcionalidad al botón para borrar el elemento de la lista
+                    removeButton.addEventListener('click', function (){
+                        listaEliminados.appendChild(li);
+                        listaComprados.removeChild(li);
+                        localStorage.removeItem(articulo.nombre);
+                    });
+
+                    upButton.addEventListener('click', function(){
+                        listaComprados.insertBefore(li, li.previousSibling);
+                    })
+
+                    downButton.addEventListener('click', function(){
+                        let nodoReferencia = li.nextSibling;
+                        nodoReferencia.parentNode.insertBefore(li, nodoReferencia.nextSibling);
+                    })
+
+                    //Append del botón al elemento li
+                    li.appendChild(removeButton);
+                    li.appendChild(upButton);
+                    li.appendChild(downButton);
+                    // Append de li al elemento 'listaComprados'.
+                    listaComprados.appendChild(li);
+                }
+            } catch (error) {
+                // Enseña mensaje de error si hay algun error.
+                console.error('Error al mostrar LocalStorage:', error);
+            }
+        } else {
+            // Enseña un mensaje de error si el 'articulo' no existe o no tiene las propiedades correctas.
+            console.error('Articulo no válido o no existe');
+        }
+
+        // Muestra el LocalStorage por consola.
+        console.log(localStorage);
+    }
+});

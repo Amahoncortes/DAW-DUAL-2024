@@ -16,7 +16,18 @@
 	</head>
 
 	<body>
+
+		{# Leer y mostrar todos los mensajes flash #}
+		{% for label, mensajes in app.flashes %}
+			{% for mensaje in mensajes %}
+				<div class="alert alert-{{label}} alert-dismissible fade show" role="alert">
+					{{mensaje}}
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+			{% endfor %}
+		{% endfor %}
+
 		{% include "common/_menu.html.twig" %}
 		{% block body %}{% endblock %}
 	</body>
-</html>
+</html></body></html>

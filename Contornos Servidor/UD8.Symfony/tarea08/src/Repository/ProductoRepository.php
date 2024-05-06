@@ -16,6 +16,8 @@ class ProductoRepository extends ServiceEntityRepository
         parent::__construct($registry, Producto::class);
     }
 
+    
+
 //    /**
 //     * @return Producto[] Returns an array of Producto objects
 //     */

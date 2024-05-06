@@ -2,13 +2,16 @@
 
 namespace App\Entity;
 
+use App\Validator as AppValidator;
 use App\Repository\ProductoRepository;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
-use App\Entity\User;
+use InvalidArgumentException;
 use Symfony\Component\Validator\Constraints as Assert;
 
 # Entidad que representa un producto
 #[ORM\Entity(repositoryClass: ProductoRepository::class)]
+#[AppValidator\ProductoNombreUnico]
 class Producto
 {
     #[ORM\Id]
@@ -16,24 +19,31 @@ class Producto
     #[ORM\Column]
     private int $id;
 
+    public function __construct()
+    {
+        $this->id = 0; // Inicializa la propiedad $id con el valor 0
+    }
+
     /*
     Incorpora una validación básica previa a la creación de una entidad
     de forma que no se puedan crear nuevas entidades si no se cumplen determinadas reglas.
-     Por ejemplo, que la propiedad de tipo String deba tener menos de 5 caracteres. Añade mensajes flash para informar al usuario del éxito o fracaso de la operación.
+     Por ejemplo, que la propiedad de tipo String deba tener más de 2 y menos de 5 caracteres.
     */
     #[Assert\NotBlank]
     #[Assert\Length(
         min: 2,
+        max: 20,
         minMessage: 'El nombre debe tener al menos {{ limit }} caracteres',
+        maxMessage: 'El nombre debe tener como maximo {{ limit }} caracteres'
     )]
     #[ORM\Column(name: 'nombre')]
     private string $nombre;
 
-    #[ORM\Column(type: 'float', name: 'precio')]
+    #[ORM\Column(name: 'precio', type: 'float')]
     private float $precio;
 
-    #[ORM\Column(type: 'datetime', name: 'fecha')]
-    private \DateTimeInterface $fechaCreacion;
+    #[ORM\Column(name: 'fecha', type: 'datetime')]
+    private DateTimeInterface $fechaCreacion;
 
 
     #[ORM\ManyToOne(inversedBy: "productos")]
@@ -63,14 +73,11 @@ class Producto
     /**
      * Establece el nombre del producto
      * @param string $nombre
-     * @throws \InvalidArgumentException if $nombre is null
+     * @throws InvalidArgumentException if $nombre is null
      * @return $this
      */
     public function setNombre(string $nombre): self
     {
-        if ($nombre === null) {
-            throw new \InvalidArgumentException('La propiedad "nombre" no puede ser nula.');
-        }
         $this->nombre = $nombre;
         return $this;
     }
@@ -97,19 +104,19 @@ class Producto
 
     /**
      * Obtiene la fecha de creación del producto
-     * @return \DateTimeInterface|null
+     * @return DateTimeInterface|null
      */
-    public function getFechaCreacion(): ?\DateTimeInterface
+    public function getFechaCreacion(): ?DateTimeInterface
     {
         return $this->fechaCreacion;
     }
 
     /**
      * Establece la fecha de creación del producto
-     * @param \DateTimeInterface $fechaCreacion
+     * @param DateTimeInterface $fechaCreacion
      * @return $this
      */
-    public function setFechaCreacion(\DateTimeInterface $fechaCreacion): self
+    public function setFechaCreacion(DateTimeInterface $fechaCreacion): self
     {
         $this->fechaCreacion = $fechaCreacion;
         return $this;
