@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (anadirBtn && borrarBtn) {
         anadirBtn.addEventListener('click', anhadirArticulo);
+        borrarBtn.addEventListener('click', borrarArticulos);
     } else {
         console.error("Botones de añadir o borrar no encontrados.");
     }
@@ -48,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (articulo && articulo.nombre && articulo.precio) {
             try {
                 localStorage.setItem(articulo.nombre, JSON.stringify(articulo));
-                const articuloObj = JSON.parse(localStorage.getItem(articulo.name));
+                const articuloObj = JSON.parse(localStorage.getItem(articulo.nombre));
                 console.log(articuloObj);
             } catch (error) {
                 console.error('Error al rellenar LocalStorage.', error);
@@ -83,13 +84,27 @@ document.addEventListener('DOMContentLoaded', function () {
                 downButton.textContent = 'Bajar';
 
                 // Añade event listeners a los botones.
-                removeButton.addEventListener('click', function () {
-                    // Mueve el elemento 'li' a 'listaEliminados' y elimina el elemento 'li' de 'listaComprados'.
-                    listaEliminados.appendChild(li);
+                removeButton.addEventListener('click', function (event) {
+                    // Mueve el elemento 'li' a 'listaEliminados' y elimina el elemento 'li' de 'listaComprados' junto
+                    // con sus botones.
+                   
                     listaComprados.removeChild(li);
+                    listaEliminados.appendChild(li);
+                    li.removeChild(removeButton);
+                    li.removeChild(upButton);
+                    li.removeChild(downButton);
+                    li.addEventListener('contextmenu', cambiarColor);
+
+                    event.stopImmediatePropagation();
+
+                    //Al hacer clic sobre un elemento de la zona de eliminados, se elimina de dicha lista.
+                    li.addEventListener('click', eliminarArticulo);
+                    listaEliminados.appendChild(li);
                     // Elimina el articulo del localStorage.
                     localStorage.removeItem(articulo.nombre);
+                    console.log(localStorage);
                 });
+
 
                 upButton.addEventListener('click', function () {
                     // Mueve el elemento li hacia arriba en 'listaComprados'.
@@ -108,10 +123,40 @@ document.addEventListener('DOMContentLoaded', function () {
                 li.appendChild(downButton);
                 //Agrega el elemento li a 'listaComprados'.
                 listaComprados.appendChild(li);
+
             }
         } else {
             // Enseña un error si el objeto articulo no es válido o le faltan propeidades.
             console.error('Articulo no válido o no existe');
         }
     }
+
+    function borrarArticulos() {
+        const listaComprados = document.getElementById('listaC');
+        const listaEliminados = document.getElementById('listaE');
+        while (listaComprados.firstChild) {
+            listaComprados.removeChild(listaComprados.firstChild);
+        }
+        // while (listaEliminados.firstChild) {
+        //     listaEliminados.removeChild(listaEliminados.firstChild);
+        // }
+        localStorage.clear();
+    }
+
+    function cambiarColor(event){
+        event.preventDefault();
+        this.style.color = randomColor();
+        this.style.backgroundColor = randomColor();
+    }
+
+    function eliminarArticulo(){
+        this.remove();
+    }
+
+    function randomColor(){
+        return '#' + Math.floor(Math.random()*16777215).toString(16);
+    }
+
+
+
 });
