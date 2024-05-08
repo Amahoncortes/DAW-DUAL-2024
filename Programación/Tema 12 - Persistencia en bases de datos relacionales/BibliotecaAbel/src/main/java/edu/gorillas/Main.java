@@ -55,7 +55,7 @@ public class Main {
                     Borrar.mainBorrar(sentencia, sc);
                     break;
                 case 3:
-                    // Modificar.modificarLibro(sentencia);
+                     Cambiar.mainCambiar(sentencia, sc);
                     break;
                 case 4:
                     //Consultar.consultarLibros(sentencia);

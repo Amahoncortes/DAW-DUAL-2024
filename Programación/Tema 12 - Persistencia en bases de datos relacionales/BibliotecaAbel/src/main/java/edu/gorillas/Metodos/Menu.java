@@ -10,7 +10,7 @@ public class Menu {
         System.out.println("****MENU PRINCIPAL****\n"
                 + "[1] Insertar\n"
                 + "[2] Eliminar\n"
-                + "[3] Modificar\n"
+                + "[3] Cambiar\n"
                 + "[4] Consultar\n"
                 + "[5] Exit\n");
         opcion = sc.nextInt();
