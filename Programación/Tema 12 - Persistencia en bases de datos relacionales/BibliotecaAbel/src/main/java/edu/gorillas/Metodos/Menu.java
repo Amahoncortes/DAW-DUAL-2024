@@ -35,8 +35,8 @@ public class Menu {
         int opcion = 0;
         System.out.println(
                 "****MENU BORRAR****\n"
-                        + "[1] Borrar Autores\n"
-                        + "[2] Borrar Libros\n"
+                        + "[1] Borrar Libros\n"
+                        + "[2] Borrar Autores\n"
                         + "[3] Exit\n"
         );
         opcion = sc.nextInt();
@@ -48,9 +48,11 @@ public class Menu {
         int opcion = 0;
         System.out.println(
                 "****MENU CONSULTAS****\n"
-                        + "[1] Consultar libros\n"
-                        + "[2] Consultar Libros Autor\\n\"\n"
-                        + "[3] Exit\n"
+                        + "[1] Consultar Datos Libro\n"
+                        + "[2] Consultar Libros Autor\n"
+                        + "[3] Consultar Libros\n"
+                        + "[4] Consultar Autores Con Sus Libros\n"
+                        + "[5] Exit\n"
         );
         opcion = sc.nextInt();
         sc.nextLine();

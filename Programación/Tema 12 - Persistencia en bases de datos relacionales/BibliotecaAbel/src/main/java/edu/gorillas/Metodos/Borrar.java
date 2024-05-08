@@ -29,7 +29,7 @@ public class Borrar {
 
     public static void borrarLibro(Statement sentencia) {
 
-        System.out.println("Introduce el ID del libro que quieres borrar: ");
+        System.out.println("Introduce el nombre del libro que quieres borrar: ");
         String nombreLibro = sc.nextLine();
 
         try{
