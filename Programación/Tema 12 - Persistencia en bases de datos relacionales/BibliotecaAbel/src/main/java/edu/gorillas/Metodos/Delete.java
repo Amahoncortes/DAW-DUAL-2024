@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
-public class Borrar {
+public class Delete {
 
     static Scanner sc = new Scanner(System.in);
 

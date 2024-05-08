@@ -8,10 +8,10 @@ public class Menu {
         int opcion = 0;
 
         System.out.println("****MENU PRINCIPAL****\n"
-                + "[1] Insertar\n"
+                + "[1] Insert\n"
                 + "[2] Eliminar\n"
-                + "[3] Cambiar\n"
-                + "[4] Buscar\n"
+                + "[3] Change\n"
+                + "[4] Search\n"
                 + "[5] Exit\n");
         opcion = sc.nextInt();
         sc.nextLine();
@@ -22,8 +22,8 @@ public class Menu {
         int opcion = 0;
         System.out.println(
                 "****MENU INSERTAR****\n"
-                        + "[1] Insertar Autores\n"
-                        + "[2] Insertar Libros\n"
+                        + "[1] Insert Autores\n"
+                        + "[2] Insert Libros\n"
                         + "[3] Exit\n"
         );
         opcion = sc.nextInt();
@@ -35,8 +35,8 @@ public class Menu {
         int opcion = 0;
         System.out.println(
                 "****MENU BORRAR****\n"
-                        + "[1] Borrar Libros\n"
-                        + "[2] Borrar Autores\n"
+                        + "[1] Delete Libros\n"
+                        + "[2] Delete Autores\n"
                         + "[3] Exit\n"
         );
         opcion = sc.nextInt();
@@ -48,8 +48,8 @@ public class Menu {
         int opcion = 0;
         System.out.println(
                 "****MENU CONSULTAS****\n"
-                        + "[1] Buscar Libro por Titulo\n"
-                        + "[2] Buscar Libro por Autor\n"
+                        + "[1] Search Libro por Titulo\n"
+                        + "[2] Search Libro por Autor\n"
                         + "[3] Listar libros\n"
                         + "[4] Listar Autores con sus libros\n"
                         + "[5] Exit\n"

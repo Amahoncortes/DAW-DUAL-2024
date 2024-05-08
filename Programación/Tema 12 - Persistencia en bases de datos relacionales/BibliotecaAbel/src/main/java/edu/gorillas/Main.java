@@ -8,64 +8,81 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
-
 public class Main {
+    private static final String URL = "jdbc:mariadb://localhost:3306/?user=root&password=";
 
-    static Scanner sc = new Scanner(System.in);
-
+    // Punto de entrada al programa
     public static void main(String[] args) {
-        Statement sentencia = null;
-        Connection conexion = null;
+        // Crea un escaner que recibe input de entrada por consola
+        Scanner scanner = new Scanner(System.in);
 
-        int opcion = 0;
+        try (
+                // Establece la conexion a la base de datos
+                Connection connection = getConnection();
+                // Crea un objeto statement para ejecutar queries SQL
+                Statement statement = connection.createStatement()
+        ) {
+            // Crea la base de datos y las tablas si no existen.
+            Create.createDatabaseAndTables(statement);
 
+            // Inicializa la variable para almacenar la opcion del menu.
+            int opcion = 0;
+
+            // Enseña el menu principal hasta que se elija una de las opciones.
+            do {
+                //Muestra el menú y recibe la entrada del usuario.
+                opcion = Menu.menuMain(scanner);
+
+                // Ejecuta la operación que corresponda con la entrada del usuario.
+                switch (opcion) {
+                    case 1:
+                        // Inserta un nuevo registro en la base de datos.
+                        Insert.mainInsertar(statement, scanner);
+                        break;
+                    case 2:
+                        // Borra un registro de la base de datos
+                        Delete.mainBorrar(statement, scanner);
+                        break;
+                    case 3:
+                        // Cambia un registro de la base de datos.
+                        Change.mainCambiar(statement, scanner);
+                        break;
+                    case 4:
+                        // Busca por un registro en la base de datos.
+                        Search.mainBuscar(statement, scanner);
+                        break;
+                    case 5:
+                        // Sale del programa
+                        System.out.println("Hasta pronto");
+                        break;
+                }
+            } while (opcion != 5);
+        } catch (SQLException e) {
+            // Maneja cualquier excepción SQL que pueda ocurrir.
+            System.out.println(e.getMessage());
+        }
+    }
+
+    /**
+     * This method is used to establish a connection with the MariaDB database.
+     * It loads the MariaDB JDBC driver, then attempts to connect to the database using the provided URL.
+     * If the driver is not found, it throws a RuntimeException.
+     *
+     * @return Connection - The connection object representing the connection to the database.
+     * @throws SQLException - If there is an error while establishing the connection.
+     */
+    private static Connection getConnection() throws SQLException {
         try {
+            // Carga el driver de MariaDB.
+            // Esto se hace para asegurar que el driver se encuentra disponible en la clasepath.
             Class.forName("org.mariadb.jdbc.Driver");
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        String url = "jdbc:mariadb://localhost:3306/?user=root&password=";
-
-        try {
-            conexion = DriverManager.getConnection(url);
-        } catch (SQLException e) {
-            System.out.println("No hay ningún driver que reconozca la URL especificada");
-        } catch (Exception e) {
-            System.out.println("Se ha producido algún otro error");
+            // Si el driver no se encuentra, se lanza una excepción.
+            throw new RuntimeException("Driver not found", e);
         }
 
-        try {
-            assert conexion != null;
-            sentencia = conexion.createStatement();
-        } catch (SQLException e) {
-            System.out.println("Error");
-        }
-
-        assert sentencia != null;
-        Crear.crearBase(sentencia);
-
-
-        do {
-            opcion = Menu.menuMain(sc);
-            switch (opcion) {
-                case 1:
-                    Insertar.mainInsertar(sentencia, sc);
-                    break;
-                case 2:
-                    Borrar.mainBorrar(sentencia, sc);
-                    break;
-                case 3:
-                     Cambiar.mainCambiar(sentencia, sc);
-                    break;
-                case 4:
-                    Buscar.mainBuscar(sentencia, sc);
-                    break;
-                case 5:
-                    System.out.println("Hasta pronto");
-                    break;
-            }
-        } while (opcion != 5);
-
-
-    }
+        // Usa el driver para establecer una conexión con la base de datos.
+        // La URL es un string que especifica la ubicación de la base de datos, el usuario y la contraseña.
+        // Debería ser definida como constante en el código.
+        return DriverManager.getConnection(URL);}
 }

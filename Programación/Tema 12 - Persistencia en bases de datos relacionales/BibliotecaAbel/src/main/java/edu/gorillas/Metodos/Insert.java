@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
-public class Insertar {
+public class Insert {
 
     static Scanner sc = new Scanner(System.in);
 
@@ -16,10 +16,10 @@ public class Insertar {
             opcion = Menu.menuInsertar(sc);
             switch (opcion) {
                 case 1:
-                    Insertar.nuevoAutor(sentencia);
+                    Insert.nuevoAutor(sentencia);
                     break;
                 case 2:
-                    Insertar.nuevoLibro(sentencia);
+                    Insert.nuevoLibro(sentencia);
                     break;
                 case 3:
                     break;

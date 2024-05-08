@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
-public class Buscar {
+public class Search {
 
     static Scanner sc = new Scanner(System.in);
 

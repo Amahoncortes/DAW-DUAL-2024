@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
-public class Cambiar {
+public class Change {
     static Scanner sc = new Scanner(System.in);
 
     public static void mainCambiar(Statement sentencia, Scanner sc) {
