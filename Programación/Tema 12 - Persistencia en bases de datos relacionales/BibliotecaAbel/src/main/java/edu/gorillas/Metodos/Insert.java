@@ -73,7 +73,7 @@ public class Insert {
             System.out.println("Dame la nacionalidad del autor");
             String nacionalidad = sc.nextLine();
             // Crear la sentencia SQL para insertar un nuevo autor
-            String sql = "INSERT INTO Authors VALUES (?, ?, ?)";
+            String sql = "INSERT INTO Autores VALUES (?, ?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
             // Establecer los valores en la sentencia SQL
@@ -83,7 +83,6 @@ public class Insert {
 
             // Ejecutar la sentencia SQL para insertar el autor en la base de datos
             preparedStatement.executeUpdate();
-            System.out.println("Autor insertado en base de datos...");
 
             // Mostrar mensaje de éxito
             System.out.println("Autor insertado en la base de datos...");
