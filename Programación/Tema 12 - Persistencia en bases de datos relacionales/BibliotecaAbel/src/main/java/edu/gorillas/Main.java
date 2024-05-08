@@ -58,7 +58,7 @@ public class Main {
                      Cambiar.mainCambiar(sentencia, sc);
                     break;
                 case 4:
-                    //Consultar.consultarLibros(sentencia);
+                    Buscar.mainBuscar(sentencia, sc);
                     break;
                 case 5:
                     System.out.println("Hasta pronto");
