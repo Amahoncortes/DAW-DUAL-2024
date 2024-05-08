@@ -39,7 +39,8 @@ public class Insertar {
             System.out.println("Dame la nacionalidad del autor");
             nacionalidad = sc.nextLine();
 
-            sentencia.executeUpdate("INSERT INTO autor VALUES ('" + dni + "', '" + nombre + "', '" + nacionalidad + "')");
+            sentencia.executeUpdate("INSERT INTO Autores VALUES ('" + dni + "', '" + nombre + "', '" + nacionalidad + "')");
+            System.out.println("Autor insertado en base de datos...");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -56,12 +57,12 @@ public class Insertar {
         String autorNombre = sc.nextLine();
 
         try {
-            ResultSet rs = sentencia.executeQuery("SELECT dni FROM autor WHERE nombre = '" + autorNombre + "'");
+            ResultSet rs = sentencia.executeQuery("SELECT dni FROM Autores WHERE nombre = '" + autorNombre + "'");
 
             if (rs.next()) {
                 String dni = rs.getString("dni");
-                sentencia.executeUpdate("INSERT INTO libro VALUES (Titulo, Precio, Autor) VALUES ('" + titulo + "', '" + precio + "', '" + autorNombre + "')");
-                System.out.println("Libro insertado en base de datos.");
+                sentencia.executeUpdate("INSERT INTO Libros (Titulo, Precio, Autor) VALUES ('" + titulo + "', '" + precio + "', '" + dni + "')");
+                System.out.println("Libro insertado en base de datos...");
             } else {
                 System.out.println("Autor no encontrado");
             }
