@@ -11,6 +11,13 @@ import java.util.Scanner;
 public class Main {
     private static final String URL = "jdbc:mariadb://localhost:3306/?user=root&password=";
 
+    /**
+     * Este es el punto de entrada al programa.
+     * Establece la conexión con la base de datos, crea la base de datos y las tablas si no existen,
+     * y presenta un menú principal al usuario para realizar operaciones CRUD sobre la base de datos.
+     * @param args Los argumentos de linea de comandos.
+     */
+
     // Punto de entrada al programa
     public static void main(String[] args) {
         // Crea un escaner que recibe input de entrada por consola
@@ -37,7 +44,7 @@ public class Main {
                 switch (opcion) {
                     case 1:
                         // Inserta un nuevo registro en la base de datos.
-                        Insert.mainInsertar(statement, scanner);
+                        Insert.mainInsertar(statement, scanner, connection);
                         break;
                     case 2:
                         // Borra un registro de la base de datos
@@ -64,12 +71,12 @@ public class Main {
     }
 
     /**
-     * This method is used to establish a connection with the MariaDB database.
-     * It loads the MariaDB JDBC driver, then attempts to connect to the database using the provided URL.
-     * If the driver is not found, it throws a RuntimeException.
+     * Este método se usa para establecer una conexión con la base de datos.
+     * Carga el driver de MariaDB, e intenta establecer una sesión con la base de datos.
+     * Si el driver no se encuentra, lanza una RuntimeException.
      *
-     * @return Connection - The connection object representing the connection to the database.
-     * @throws SQLException - If there is an error while establishing the connection.
+     * @return Connection - La conexión con la base de datos.
+     * @throws SQLException - Si hay un error al establecer la sesión, lanza esta excepción.
      */
     private static Connection getConnection() throws SQLException {
         try {
