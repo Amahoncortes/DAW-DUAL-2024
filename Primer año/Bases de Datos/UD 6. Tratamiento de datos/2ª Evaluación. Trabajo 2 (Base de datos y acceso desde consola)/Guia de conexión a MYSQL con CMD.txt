@@ -1,0 +1,11 @@
+Pasos de conexión (para el alumno perdido)
+1.abrir cmd
+2.abrir xampp y encender el módulo de mysql
+3.Navegar en el cmd a la carpeta donde se localiza Workbench (en mi caso C:\Program Files\MySQL\MySQL Workbench 8.0 CE)
+O 
+en el cmd, escribir C:\>dir mysql.exe/s
+4.Ejecutar comando de conexión(por ejemplo, si queremos conectarnos con el usuario 
+‘abel’, el comando será: mysql -u abel -p
+5.Introducir la contraseña del usuario
+6.Seleccionar la base de datos
+7.Hacer consultas solicitadas

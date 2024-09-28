@@ -1,0 +1,1 @@
+Instalar Python, un linter, VSCode o el editor de código que prefieras y configurar todo este entorno de desarrollo: VER EL VIDEO

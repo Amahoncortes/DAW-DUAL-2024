@@ -1,0 +1,1 @@
+Crea un repo en github para el kata Yatzy y conéctalo con el repo local de tu máquina

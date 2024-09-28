@@ -1,0 +1,5 @@
+1.Libro.1
+2.Pantalla.2
+3.Teclado.3
+4.Mouse.4
+5.Cable de Red.5

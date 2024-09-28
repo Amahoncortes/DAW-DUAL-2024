@@ -1,0 +1,3 @@
+"Variables, objetos y referencias en Python: Libro de la rata, learning Python, CHAPTER 6
+The Dynamic Typing Interlude, páginas 175 a 181"
+

@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lista de productos
+{% endblock %}
+
+{% block body %}
+	{% include "common/_messages.html.twig" %}
+
+	<div class="product-list">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Nombre</th>
+					<th>Precio</th>
+					<th>Fecha de creacion</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for producto in productos %}
+					<tr>
+						<td>{{ producto.id }}</td>
+						<td>{{ producto.nombre }}</td>
+						<td>{{ producto.precio }}</td>
+						<td>{{ producto.fechaCreacion|date('Y-m-d H:i') }}</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td>No se encontraron productos.</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+		<div>
+			<form action="{{ path('app_producto_delete') }}" method="post">
+				<label for="idProducto" class="form-label">ID</label>
+				<input type="text" class="form-control" id="idProducto" name="idProducto">
+				<button type="submit" class="btn btn-danger">Eliminar</button>
+			</form>
+		</div>
+	</div>
+{% endblock %}

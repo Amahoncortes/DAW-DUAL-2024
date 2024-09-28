@@ -1,0 +1,3 @@
+Crear un fichero .gitignore y configurarlo para el kata Java Yatzy (página 126 del libro)
+
+

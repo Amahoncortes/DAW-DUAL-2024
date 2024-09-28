@@ -1,0 +1,83 @@
+<html lang="es">
+
+<head>
+    <title>App de gestion de alumnos</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style>
+        table,
+        td {
+            border: black solid 1pt;
+        }
+    </style>
+    <script src="js/Alumno.js"></script>
+    <script src="js/ej_1.js"></script>
+
+</head>
+
+<body>
+    <h1> Inserta Alumnos </h1>
+    <form id="formalumnos">
+
+
+        <form>
+            <fieldset>
+                <legend>Alumnos</legend>
+                <p>
+                    <input type="text" id="addNombre" />
+                    <label for="nombre">Nombre</label>
+                </p>
+                <p>
+                    <input type="text" id="addDireccion" />
+                    <label for="direccion">Dirección</label>
+                </p>
+                <p>
+                    <input type="text" id="addDni" />
+                    <label for="dni">DNI</label>
+                </p>
+                <p>
+                    <input type="submit" value="Guardar" id="guardar" />
+                    <input type="button" value="Mostrar" id="mostrar" />
+
+                </p>
+            </fieldset>
+
+        </form>
+
+        <div id="alumnos">
+        </div>
+        <br>
+        
+            <form action="" id="buscar">
+                <h2> Buscar alumno</h2>
+                <ol>
+                    <li>
+                        <label for="">Alumno
+                            <input type="text" id="buscarAlumno">
+                        </label>
+                    </li>
+                </ol>
+                <ol>
+                    <ul>
+                        <input type="submit" value="Buscar">
+                    </ul>
+                </ol>
+            </form>
+       
+        <div id="divAlumnosBuscados"></div>
+
+        <br>
+        <br>
+        <form id="formborraralumnos">
+            <fieldset>
+                <legend>Eliminar alumnos</legend>
+                <input type="text" id="removeAlumno" />
+                <input type="button" value="Borrar" id="borrar" />
+            </fieldset>
+        </form>
+        <div id="divAlumnosBorrados"></div>
+    </form>
+</body>
+
+</html>

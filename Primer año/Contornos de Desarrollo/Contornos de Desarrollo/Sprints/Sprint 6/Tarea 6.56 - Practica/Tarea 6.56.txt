@@ -1,0 +1,2 @@
+Git stash: leer este howto (también en mis apuntes hoja de ruta git)
+https://www.freecodecamp.org/news/git-stash-explained/

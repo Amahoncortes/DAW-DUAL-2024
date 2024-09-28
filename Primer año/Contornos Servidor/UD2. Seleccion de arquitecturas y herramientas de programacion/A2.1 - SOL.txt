@@ -1,0 +1,30 @@
+A2.1-Clasificación de Tecnologías-SOL
+Busca las siguientes tecnologías relacionadas con el desarrollo web y clasifícalas en:
+
+Cliente/Servidor e indica con qué lenguajes de programación están relacionados
+
+React
+Spring Framework
+Node.js
+Laravel
+AngularJS
+Symfony
+Apache Struts
+
+Url	Breve descripción	Lado Cliente	Lado Servidor	Lenguaje
+React	https://es.reactjs.org/	Una biblioteca de JavaScript para construir interfaces de usuario	X	
+JavaScript (JSX, una extensión de JavaScript con sintaxis similar a XML)
+Spring Framework	https://spring.io/	Framework para el desarrollo de aplicaciones Java. Cuenta con módulos que facilitan la instanciación de clases (inversión de control) , la gestión de aspectos transversales forma sistematizada (como la gestión de transacciones, de autorización, …), etc.	
+X	Java
+Node.js	https://nodejs.org/es/	Entorno de ejecución de JavaScript orientado a eventos asíncronos (un entorno que se no se bloquea y permite seguir respondiendo a eventos mientras finaliza una tarea que se ejecuta en paralelo)
+
+X (predominante)
+ECMAScript v6 (Abreviado como ES6 o ES2015) es el estándar que sigue JavaScript desde Junio de 2015
+Laravel	https://laravel.com/	Framework  abierto para desarrollar aplicaciones y servicios web con PHP. Usa el patrón Modelo vista controlador (MVC)	
+X	PHP
+AngularJS	https://angularjs.org/	Framework de JavaScript de código abierto, mantenido por Google, que se utiliza para crear y mantener aplicaciones web de una sola página. También utiliza MVC	X	
+TypeScript (un superconjunto de JavaScript, orientado a objetos)
+Symfony	https://symfony.com/	Framework diseñado para desarrollar aplicaciones web en PHP basado en el patrón MVC	
+X	PHP
+Apache Struts	https://struts.apache.org/	Framework para el desarrollo de aplicaciones Web del patrón MVC bajo la plataforma Java EE (Java Enterprise Edition)	
+X	Java

@@ -1,0 +1,24 @@
+Ejercicio 1
+1. Crear objetos JavaScript con atributos
+2. Convertir dicho objeto a un objeto json, para almacenarlo en el localStorage (.parse). Crear un addEventListener y asociarlo al botón de borrar, 
+borrarlo del localStorage. (.remove?) En el caso de que no exista, mostrar alert.
+
+Ejercicio 2
+A partir del fichero ejercicio.html, gestionar lista de la compra:
+
+Añadir articulo con el boton añadir. 
+1.Paso 1:Crear elementos en el arbol DOM sin usar innerHTML, outerHTML, ni insertAdjacentHTML.
+1-Introducir los valores en el cuadro de texto. Deben aparecer asteriscos en lugar del valor introducido.
+2-Tras almacenar el nuevo objeto, el articulo debe desaparecer del campo de texto.
+3-Si el campo de texto está vacío al pulsar añadir, no debe crearse ningun articulo, y se muestra un error con el alert.
+4-Se añadirá un botón al lado de cada elemento, para poder eliminar dicho elemento de la lista. Evento click.
+5-Se añadirán dos botones al lado de cada elemento para moverlos arriba o abajo en la lista. Asignar funcionalidad.
+
+2.Paso 2:Comprobar funcionalidad de los botones
+1.Los botones arriba y abajo mueven los elementos en la lista.
+2.El botón eliminar de cada elemento lo elimina del localStorage y lo ubica en la zona de eliminados, para la cual debemos crear una lista.
+3.El botón borrar, elimina todos los elementos comprados.
+3.1-Zona eliminados. Usar delegacion de eventos:
+    Al pulsar con el botón derecho sobre un artículo eliminado , cambia el color de fondo y el color del texto
+    Al hacer click sobre un elemento de la zona de eliminados, se elimina de dicha lista.
+

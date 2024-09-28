@@ -1,0 +1,65 @@
+Rama MAIN creada.
+
+1. Se crea una rama development
+git branch development
+
+2. Se crea ya una nueva Feature para esa rama development
+git checkout development
+git branch feature1
+
+3. Se hace un commit en la rama development
+git commit -m "commit_1_develop"
+
+4. Se ha detectado un bug en PROD. Se necesita hacer un HOTFIX. Crea la rama hotfix y haz un commit. Además en paralelo se está comiteando la rama development.
+git checkout main
+git branch hotfix
+git checkout hotfix
+git commit -m "commit_1_hotfix"
+git checkout develop
+git commit -m "commit_2_develop"
+
+5. El HotFix se mergea contra PROD.
+git checkout main
+git merge hotfix
+
+6. OJO! Necesitamos ese HOTFIX en Development también.
+git checkout develop
+git merge hotfix
+
+7. La rama Feature se hacen un par de commits.
+git checkout feature1
+git commit -m "commit_1_feature1"
+git commit -m "commit_2_feature1"
+
+8. Se crea una nueva Feature2 a partir del último commit de la rama development y se hacen 2 commits
+git checkout development
+git branch feature2
+git commit -m "commit_1_feature2"
+git commit -m "commit_2_feature2"
+
+9. Se hace otro commit en la rama de feature pero acaba muriendo (no se aplica esa feature a development)
+git checkout feature1
+
+10. Se hace un commit de la rama develop.
+git checkout develop
+git commit -m "commit_3_develop"
+11. La rama feature2 acaba siendo mergeada contra la rama development.
+git checkout development
+git merge feature2
+
+12. Se crea una rama Release a raíz del último merge de la rama development y se hace 2 commits.
+git branch release
+git checkout release 
+git commit -m "commit_1_release"
+git commit -m "commit_2_release"
+
+13. Está rama Release se acaba mergeando contra Main creando así la versión v1.0 y contra development.
+git checkout main
+git merge release
+
+git checkout develop
+git merge release
+
+Dibuja el GIT FLOW de este pipeline.
+
+https://learngitbranching.js.org/?locale=es_ES

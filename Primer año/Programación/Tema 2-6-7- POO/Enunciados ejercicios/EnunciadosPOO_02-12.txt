@@ -1,0 +1,163 @@
+Crea una clase Cuenta que tendr  los siguientes atributos: 
+titular
+cantidad (puede tener decimales).
+
+El titular ser  obligatorio y la cantidad opcional. 
+Crea dos constructores que cumpla lo anterior.
+
+Crea sus m todos get, set y toString.
+
+Tendr  dos m todos especiales:
+
+ingresar(double cantidad): se ingresa una cantidad a la cuenta, si la cantidad introducida es negativa, no se har  nada.
+retirar(double cantidad): se retira una cantidad a la cuenta, si restando la cantidad actual a la que nos pasan es negativa, la cantidad de la cuenta pasa a ser 0.
+
+-------------------------------------------------
+Vamos a crear una clase Titular. 
+Atributos: nombre, fecha de nacimiento, DNI, sexo y direccion. Asignar valores por defecto a todos los atributos seg n su tipo.
+ * Sexo ser  hombre por defecto, se deber  usar una constante para ello.
+ 
+Constructores:
+ * Uno por defecto.
+ * Uno que reciba nombre, fecha de nacimiento y sexo, resto por defecto.
+ * Otro con todos los atributos como par metro.
+M todos:
+ * boolean esMayorDeEdad()
+  * void comprobarSexo(char sexo): comprueba que el sexo introducido sea correcto.Si es incorrecto, asignar  H.
+ * toString()
+
+A continuaci n, sustituye en la clase Cuenta todas las referencias al titular, para que, en vez de 
+gestionar sus datos a trav s de atributos, lo realice mediante un objeto de tipo Titular.
+
+-------------------------------------------------
+Implementa una clase consumo, la cual forma parte de la centralita electr nica de un coche y tiene las siguientes caracter sticas:
+?? Atributos:
+  kms. Kil metros recorridos por el coche.
+  litros. Litros de combustible consumido.
+  vmed. Velocidad media.
+  pgas. Precio de la gasolina.
+?? M todos: 
+  getTiempo. Indicar  el tiempo empleado en realizar el viaje.
+  consumoMedio. Consumo medio del veh culo (en litros cada 100 kil metros).
+  consumoEuros. Consumo medio del veh culo (en euros cada 100 kil metros).
+No olvides crear un constructor para la clase que establezca el valor de los atributos. Elige el tipo de datos m s apropiado para cada atributo.
+
+---------------------------------
+
+Realiza una clase finanzas que convierta d lares a euros y viceversa. Codifica los m todos dolaresToEuros y 
+eurosToDolares. Prueba que dicha clase funciona correctamente haciendo conversiones entre euros y d lares. 
+La clase tiene que tener:
+?? Un constructor finanzas() por defecto, el cual establecer  el cambio D lar-Euro en 1.36. 
+?? Un constructor finanzas(double), el cual permitir  configurar el cambio d lar-euro. 
+
+---------------------------------
+Crea la clase Peso, la cual tendrá las siguientes características:
+
+Deberá tener un atributo donde se almacene el peso de un objeto en kilogramos.
+En el constructor se le pasará el peso y la medida en la que se ha tomado (Lb para libras, Li para lingotes, Oz para onzas, P para peniques, K para kilos, G para gramos y Q para quintales).
+Deberá tener los siguientes métodos:
+getLibras. Devuelve el peso en libras.
+getLingotes. Devuelve el peso en lingotes.
+getPeso. Devuelve el peso en la medida que se pase como parámetro (Lb para libras, Li para lingotes, Oz para onzas, P para peniques, K para kilos, G para gramos y Q para quintales).
+Para la realización del ejercicio toma como referencia los siguientes datos:
+
+1 Libra = 16 onzas = 453 gramos.
+1 Lingote = 32.17 libras = 14.59 kg.
+1 Onza = 0.0625 libras = 28.35 gramos.
+1 Penique = 0.05 onzas = 1.55 gramos.
+1 Quintal = 100 libras = 43.3 kg.
+Crea además un método main para testear y verificar los métodos de esta clase.
+---------------------------------
+Modifica la clase Satelite y añádele los siguientes métodos:
+
+Método void variaAltura(double desplazamiento): Este método acepta un parámetro que será positivo o negativo, dependiendo de si el satélite tiene que alejarse o acercarse a La Tierra.
+Método boolean enOrbita(): Este método devolverá false si el satélite está en tierra, y true en caso contrario.
+Método void variaPosicion(double variap, double variam): Este método permite modificar los atributos de posición (meridiano y paralelo) mediante los parámetros variap y variam. Estos parámetros serán valores positivos o negativos relativos que harán que el satélite modifique su posición. 
+
+-------------------------------------------------
+El restaurante mejicano de Israel cuya especialidad son las papas con chocos nos pide dise ar un m todo con el que se pueda saber cu ntos clientes pueden atender con la materia prima que tienen en el almac n. El m todo recibe la cantidad de papas y chocos en kilos y devuelve el n mero de clientes que puede atender el restaurante teniendo en cuenta que por cada tres personas, Israel utiliza un kilo de papas y medio de chocos
+
+-------------------------------------------------
+Tenemos la siguiente clase:
+public abstract class sorteo{
+protected int posibilidades;
+public abstract int lanzar();
+}
+Se pide:
+** Crear la clase dado, la cual desciende de la clase sorteo. La clase dado, en la llamada lanzar() mostrar  un n mero aleatorio del 1 al 6.
+** Crear la clase moneda, la cual desciende de la clase sorteo. Esta clase en la llamada al m todo lanzar()mostrar  las palabras cara o cruz
+
+-------------------------------------------------
+Implementar un programa que represente el consumo de energ a de una instalaci n el ctrica. Existir  una clase gen rica "Aparato" que represente los aparatos conectados a la instalaci n.
+Cada uno de ellos tendr  un consumo el ctrico determinado.
+Al encender un aparato el ctrico, el consumo de energ a total se incrementa en la potencia de dicho aparato.
+Al apagarlo, se decrementa el consumo.
+Por defecto, al crearse, los aparatos est n todos apagados.
+Deber  poder consultarse el consumo total de la instalaci n.
+
+-------------------------------------------------
+Crear clase Electrodomestico que contenga:
+Atributos:
+	Precio base
+	Color
+	Consumo energ tico (letras entre A y F)
+	Peso.
+Por defecto, el color sera blanco, el consumo energ tico ser  F, el precioBase 100   y el peso 5 kg. Los colores disponibles son blanco, negro, rojo, azul y gris.
+Constructores:
+	Uno por defecto.
+	Uno con el precio y peso. El resto por defecto.
+	Uno con todos los atributos.
+M todos:
+Getters y Setters.
+comprobarConsumoEnergetico(char letra): comprueba que la letra es correcta, si no es correcta usar  la letra por defecto. Se invocar  al crear el objeto y no ser  visible.
+comprobarColor(String color): comprueba que el color es correcto, si no lo es usa el color por defecto. Se invocar  al crear el objeto y no ser  visible.
+precioFinal(): seg n el consumo energ tico, aumentar  su precio de la siguiente manera:
+LETRA	PRECIO
+A	100  
+B	80  
+C	60  
+D	50  
+E	30  
+F	10  
+-------------------------------------------------
+Crear ahora una subclase Lavavajillas:
+Su atributo es numServicios.
+Por defecto, la carga es de 12 servicios. Usa una constante para ello.
+Constructores:
+	Uno por defecto.
+	Uno con el precio y peso. El resto por defecto.
+	Uno con todos los atributos.
+M todos:
+	Getters y Setters necesarios
+	precioFinal(): si tiene m s de 12 servicios, aumentar  el precio 60  . Las condiciones que de la clase padre tambi n deben afectar al precio.
+
+-------------------------------------------------
+Crear una subclase Television:
+
+Atributos:
+	Resoluci n (en pulgadas). Por defecto ser  de 32.
+	Sintonizador TDT (booleano). Por defecto ser  false.
+
+Constructores:
+	Uno por defecto.
+	Uno con el precio y peso. El resto por defecto.
+Un constructor con la resoluci n, sintonizador TDT y el resto de atributos heredados. Recuerda que debes llamar al constructor de la clase padre.
+Los m todos que se implementara ser n:
+M todo get de resoluci n y sintonizador TDT.
+precioFinal(): si tiene una resoluci n mayor de 40 pulgadas, se incrementara el precio un 30% y si tiene un sintonizador TDT incorporado, aumentar  50  . Recuerda que las condiciones que hemos visto en la clase Electrodomestico tambi n deben afectar al precio.
+
+-------------------------------------------------
+Ahora crea una clase ejecutable que realice lo siguiente:
+Crea un array de Electrodomesticos de 10 posiciones.
+Asigna a cada posici n un objeto de las clases anteriores con los valores que desees.
+Ahora, recorre este array y ejecuta el m todo precioFinal().
+Deber s mostrar el precio de cada clase, es decir, el precio de todas las televisiones por un lado, el de los lavavajillas por otro y la suma de los Electrodomesticos 
+Por ejemplo, si tenemos un Electrodomestico con un precio final de 300, un lavavajillas de 200 y una televisi n de 500, el resultado final sera de 1000 (300+200+500) para electrodom sticos, 200 para lavavajillas y 500 para televisi n.
+-------------------------------------------------
+Se va a implementar una aplicaci n que gestione una universidad. Se almacenar n datos sobre los docentes y sobre los alumnos. Se registrar n los nombres, edad, DNI, sexo, peso y altura de ambos tipos de personas. Para todos ellos, al crear un nuevo objeto, se deber  comprobar si la edad introducida es v lida y si es mayor de edad, para poder crear el objeto. Adem s, se comprobar  si el sexo introducido es correcto. Existir  un m todo mostrarInfo(), que imprimir  por pantalla los datos de cada persona.
+
+Los docentes en concreto tendr n un atributo propio materia, que almacenar  la asignatura que  ste imparte.
+En el caso de los alumnos, almacenar n de manera espec fica la escuela en la que estudian (dentro de la universidad) y el grado que cursan.
+Dentro de alumnos, existir  un tipo concreto, que ser  el alumnado internacional, para los que se almacenar  el pa s del que proceden.
+
+En el programa ejecutable, crea un array de 7 elementos entre los cuales existan elementos de todas las clases implementadas, uno con edad inv lida y otro con edad inferior a 18 a os. Posteriormente, muestra todos los datos para cada uno de los elementos del array.

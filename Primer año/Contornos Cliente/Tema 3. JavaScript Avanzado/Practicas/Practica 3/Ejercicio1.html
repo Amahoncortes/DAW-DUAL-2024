@@ -1,0 +1,65 @@
+<html lang="es">
+
+<head>
+    <title>JSON</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="js/pelicula.js"></script>
+    <script src="js/ej_1.js"></script>
+</head>
+
+<body>
+    <h1> Añade tu pelicula </h1>
+    <form id="formpeliculas">
+        <fieldset>
+            <legend>Añade las peliculas</legend>
+            <p>
+                <input type="text" id="addTitulo" />
+                <label for="titulo">Titulo</label>
+            </p>
+            <p>
+                <input type="text" id="addDirector" />
+                <label for="director">Director</label>
+            </p>
+            <p>
+                <input type="text" id="addDuracion" />
+                <label for="duracion">Duracion</label>
+            </p>
+            <p>
+                <button type="submit" value="Guardar">Guardar</button>
+                <input type="button" value="Mostrar" id="mostrar">
+            </p>
+        </fieldset>
+
+    </form>
+
+
+
+
+    <div id="peliculas">
+    </div>
+    <br>
+    
+    <form action="" id="buscar">
+        <h2> Buscar peliculas: </h2>
+        <label for="">Pelicula
+            <input type="text" id="buscarPelicula">
+            <input type="submit" value="Buscar">
+        </label>
+
+        <ul id="peliculaslist"> </ul>
+
+    </form>
+
+    <form id="formborrarpeliculas">
+        <fieldset>
+            <legend>Borrar peliculas</legend>
+            <input type="text" id="removepelicula" />
+            <button type="submit"> Borrar </button>
+        </fieldset>
+    </form>
+
+</body>
+
+</html>

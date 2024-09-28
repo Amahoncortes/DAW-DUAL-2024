@@ -1,0 +1,46 @@
+
+La rama main ya está creada.
+
+1. Crea la rama develop
+git branch develop
+
+2. Desarrolla un par de commit en develop
+git checkout develop
+git commit -m "commit_1_develop"
+git commit -m "commit_2_develop"
+
+3. Crea la rama release a partir de la develop
+git branch release
+
+4. Añade un par de commits
+git checkout release
+git commit -m "commit_1_release"
+git commit -m "commit_2_release"
+
+5. Crea un commit más en develop
+git checkout develop
+git commit -m "commit_3_develop"
+
+6. Añade los cambios de release a main y a develop
+git checkout main
+git merge release
+
+git checkout develop
+git merge release
+
+7. Crea una rama feature desde develop y crea un par de commits
+git branch feature1
+git checkout feature1
+git commit -m "commit_1_feature1"
+git commit -m "commit_2_feature1"
+
+8. Crea un par de commits en develop
+git checkout develop
+git commit -m "commit_4_develop"
+git commit -m "commit_5_develop"
+
+9. Añade la nueva feature a la rama develop
+git merge feature1
+
+
+
